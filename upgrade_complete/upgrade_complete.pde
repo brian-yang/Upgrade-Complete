@@ -3,6 +3,8 @@ import controlP5.*;
 ControlP5 controlP5;
 HashMap<String, Screen> screens;
 String curScreen;
+int gameMode;
+Game game;
 // ======================================================
 /* SETUP & DRAW */
 // ======================================================
@@ -30,6 +32,12 @@ void draw() {
    textSize(100);
    text(curScreen, 50, 100);
    // ==========================
+   if (curScreen.equals("Play")) {
+     if (gameMode == 0) {
+       game = new Game();
+     }
+     gameMode = 1;
+   }
    screens.get(curScreen).display(); // display current screen
 }
 
@@ -42,6 +50,9 @@ void controlEvent(ControlEvent event) {
     if (event.getController().getId() == 0) {
         // System.out.println(event.getController().getName());
         setScreen("Store");
+    } else if (event.getController().getId() == 1) {
+        // System.out.println(event.getController().getName());
+        setScreen(event.getController().getName());
     }
 }
 

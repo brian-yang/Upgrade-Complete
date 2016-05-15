@@ -4,10 +4,10 @@ ArrayList<Button> upgradeButtons = new ArrayList<Button>(); // list of buttons r
 // NOTE: All buttons should be hidden when initialized
 
 void screenButtons() {
-  screenButtons.add(controlP5.addButton("Start!").hide());
-  screenButtons.add(controlP5.addButton("Play").hide());
-  screenButtons.add(controlP5.addButton("Menu").hide());
-  screenButtons.add(controlP5.addButton("Store").hide());
+  screenButtons.add(controlP5.addButton("Start!").hide()); // 0
+  screenButtons.add(controlP5.addButton("Play").hide()); // 1
+  screenButtons.add(controlP5.addButton("Menu").hide()); // 2
+  screenButtons.add(controlP5.addButton("Store").hide()); // 3
 }
 
 void upgradeButtons() {}
