@@ -10,6 +10,7 @@ void welcome() {
     .setSize(100, 100)
     .getCaptionLabel().setText("Start!");
   activeButtons.add(screenButtons.get(0));
+ 
 }
 
 void store() {

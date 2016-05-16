@@ -1,4 +1,6 @@
 import controlP5.*;
+int time;
+int wait = 1000;
 
 ControlP5 controlP5;
 HashMap<String, Screen> screens;
@@ -20,9 +22,11 @@ void setup() {
   // implemented in setupButtons tab
   screenButtons();
   upgradeButtons();
-
+  
   curScreen = "Welcome";
+  
   screens.get(curScreen).display(); // display Welcome screen
+ 
 }
 
 void draw() {
@@ -77,3 +81,5 @@ void setScreen(String name) {
     }
     activeButtons.clear();
 }
+
+//testing commit
