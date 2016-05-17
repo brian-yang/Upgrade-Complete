@@ -33,12 +33,6 @@ void draw() {
    textSize(100);
    text(curScreen, 50, 100);
    // ==========================
-   if (curScreen.equals("Play")) {
-     if (gameMode == 0) {
-       game = new Game();
-     }
-     gameMode = 1;
-   }
    screens.get(curScreen).display(); // display current screen
 }
 
@@ -83,4 +77,8 @@ void setScreen(String name) {
       b.hide();
     }
     activeButtons.clear();
+    if (name.equals("Play")) {
+      game = new Game();
+      gameMode = 1;
+    }
 }
