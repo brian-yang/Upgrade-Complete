@@ -6,11 +6,13 @@ HashMap<String, Screen> screens;
 String curScreen;
 int gameMode;
 Game game;
+int timeElapsed;
 // ======================================================
 /* SETUP & DRAW */
 // ======================================================
 
 void setup() {
+  
   size(900, 1000);
   smooth();
   
@@ -27,6 +29,7 @@ void setup() {
 }
 
 void draw() {
+  timeElapsed = millis();
    background(255);
    // FOR TESTING SCREEN CHANGES
    fill(30,100,200);
