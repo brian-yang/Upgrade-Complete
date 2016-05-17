@@ -1,24 +1,29 @@
 class Sprite {
-  double x, y;
+  float x, y;
+  float spriteWidth;
+  float spriteHeight;
   
-  Sprite(double x, double y) {
+  Sprite(float x, float y) {
     this.x = x;
     this.y = y;
+    spriteWidth = 100;
+    spriteHeight = 100;
+  }
+  
+  Sprite(float x, float y, float w, float h) {
+    this(x, y);
+    spriteWidth = w;
+    spriteHeight = h;
   }
   
   void show() {
-     fill(10,70,100);
-     rect((float) x, (float) y, 100, 100);
+     fill(10, 70, 100);
+     rect(x, y, spriteWidth, spriteHeight);
   }
 
-  void setX(double x) {
-    this.x = x;
-  }
-
-  void setY(double y) {
-    this.y = y;
-  }
-  
-  double getX() { return x; }
-  double getY() { return y; }
+  // Getters and setters
+  void setX(float x) { this.x = x; }
+  void setY(float y) { this.y = y; }
+  float getX() { return x; }
+  float getY() { return y; }
 }
