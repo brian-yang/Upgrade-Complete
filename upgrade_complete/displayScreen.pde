@@ -43,6 +43,7 @@ void play() {
   background(0, 102, 204);
   if (game.isFinished()) {
     background(0);
+    gameMode = 0;
     screenButtons.get(2)
       .show()
       .setId(1)

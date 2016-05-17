@@ -1,4 +1,5 @@
 import controlP5.*;
+import java.util.Arrays;
 
 ControlP5 controlP5;
 HashMap<String, Screen> screens;
@@ -42,18 +43,24 @@ void draw() {
 }
 
 // ======================================================
-/* CONTROL EVENT */
+/* EVENTS */
 // ======================================================
 
 // similar to keyPressed but specifically for controlP5 elements
 void controlEvent(ControlEvent event) {
-    if (event.getController().getId() == 0) {
-        // System.out.println(event.getController().getName());
-        setScreen("Store");
-    } else if (event.getController().getId() == 1) {
-        // System.out.println(event.getController().getName());
-        setScreen(event.getController().getName());
-    }
+  if (event.getController().getId() == 0) {
+    // System.out.println(event.getController().getName());
+    setScreen("Store");
+  } else if (event.getController().getId() == 1) {
+    // System.out.println(event.getController().getName());
+    setScreen(event.getController().getName());
+  }
+}
+
+void mousePressed() {
+  if (gameMode > 0) {
+    game.destroyEnemies();
+  }
 }
 
 // ======================================================
