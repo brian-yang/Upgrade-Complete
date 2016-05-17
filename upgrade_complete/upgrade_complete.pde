@@ -1,5 +1,5 @@
 import controlP5.*;
-import java.util.Arrays;
+import java.util.*;
 
 ControlP5 controlP5;
 HashMap<String, Screen> screens;
