@@ -5,5 +5,5 @@ void fileParse(HashMap<String, String> dict, String file) {
     line = f.nextLine();
     dict.put(line.split(":")[0], line.split(":")[1]);
   }
-  
+  f.close();
 }

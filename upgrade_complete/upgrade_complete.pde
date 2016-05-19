@@ -5,6 +5,7 @@ ControlP5 controlP5;
 HashMap<String, Screen> screens;
 String curScreen;
 int gameMode;
+int money;
 Game game;
 // ======================================================
 /* SETUP & DRAW */
@@ -24,6 +25,7 @@ void setup() {
 
   curScreen = "Welcome";
   screens.get(curScreen).display(); // display Welcome screen
+  money += 500;
 }
 
 void draw() {

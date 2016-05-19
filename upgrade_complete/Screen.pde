@@ -15,6 +15,11 @@ class Screen {
         } else {
           play();
         }
+
+        for (Button b : activeButtons) {
+          b.show();
+        }
+
     }
     
 }
