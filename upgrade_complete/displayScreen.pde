@@ -1,57 +1,53 @@
 ArrayList<Button> activeButtons = new ArrayList<Button>(); // list of active buttons
 
-// Functions that customize each screen
+// SCREEN CUSTOMIZER FUNCTIONS
 
 void welcome() {
   screenButtons.get(0)
-    .show()
-    .setId(0)
     .setPosition(200, 250)
-    .setSize(100, 100)
-    .getCaptionLabel().setText("Start!");
-  activeButtons.add(screenButtons.get(0));
+    .setId(0);
+  addActiveButtons(0);
 }
 
 void store() {
-  screenButtons.get(2)
-    .show()
-    .setId(1)
-    .setPosition(200, 250)
-    .setSize(100, 100)
-    .getCaptionLabel().setText("Menu");
-  activeButtons.add(screenButtons.get(2));
+  screenButtons.get(2).setPosition(200, 250);
+  addActiveButtons(2);
+  displayMoney();
 }
 void menu() {
-  screenButtons.get(1)
-    .show()
-    .setId(1)
-    .setPosition(200, 250)
-    .setSize(100, 100)
-    .getCaptionLabel().setText("Play");
-    
-  screenButtons.get(3)
-    .show()
-    .setId(1)
-    .setPosition(200, 550)
-    .setSize(100, 100)
-    .getCaptionLabel().setText("Store");
-    
-  activeButtons.add(screenButtons.get(1));
-  activeButtons.add(screenButtons.get(3));
+  screenButtons.get(1).setPosition(200, 250);  
+  screenButtons.get(3).setPosition(200, 550);
+
+  addActiveButtons(1);
+  addActiveButtons(3);
 }
 void play() {
   background(0, 102, 204);
   if (game.isFinished()) {
     background(0);
-    gameMode = 0;
-    screenButtons.get(2)
-      .show()
-      .setId(1)
-      .setPosition(200, 250)
-      .setSize(100, 100)
-      .getCaptionLabel().setText("Menu");
-    activeButtons.add(screenButtons.get(2));
+    endGame();
+    screenButtons.get(2).setPosition(200, 250);
+    addActiveButtons(2);
   } else {
     game.run();
   }
+}
+
+// HELPER FUNCTIONS
+void addActiveButtons(int index) {
+  if (!activeButtons.contains(screenButtons.get(index))) {
+    activeButtons.add(screenButtons.get(index));
+  }
+}
+
+void endGame() {
+  if (gameMode == 1) {
+    money += 50;
+  } // forces money to be added once
+  gameMode = 0;
+}
+
+void displayMoney() {
+  textSize(50);
+  text("Cash: $" + Integer.toString(money), .05 * width, .95 * height);
 }

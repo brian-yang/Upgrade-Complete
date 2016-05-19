@@ -1,13 +1,13 @@
 import controlP5.*;
-import java.util.Arrays;
+import java.util.*;
 
 ControlP5 controlP5;
 HashMap<String, Screen> screens;
 String curScreen;
 int gameMode;
-Game game;
+int money;
 int timeElapsed;
-
+Game game;
 // ======================================================
 /* SETUP & DRAW */
 // ======================================================
@@ -26,11 +26,12 @@ void setup() {
 
   curScreen = "Welcome";
   screens.get(curScreen).display(); // display Welcome screen
+  money += 500;
 }
 
 void draw() {
   timeElapsed = millis();
-  background(255);
+   background(255);
    // FOR TESTING SCREEN CHANGES
    fill(30,100,200);
    textSize(100);

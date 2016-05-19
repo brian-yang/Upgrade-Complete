@@ -16,16 +16,17 @@ class Screen {
               String store = "But if you want to buy something, you're gonna need a shop first. Would you like to buy a shop menu for $500?";
               textSize(16);
               text(store,200, 150, 300, 300);}  // Text wraps within text box
-            if (timeElapsed > 6000 && timeElapsed <= 6050){ 
-               controlP5.addButton("Yes1")
-                .setPosition(200, 250)
-                .setSize(64, 32);
-                       
+            // COMMENTED OUT TO MAKE SURE MASTER BRANCH WORKS - Brian
+            //if (timeElapsed > 6000 && timeElapsed <= 6050){ 
+            //   controlP5.addButton("Yes1")
+            //    .setPosition(200, 250)
+            //    .setSize(64, 32);
+            //}
+            if (timeElapsed > 6000) {
+              welcome();
+            }
            }
          }
-      }
-            
-            //welcome();
          else if (name.equals("Store")) {
           store();
         } else if (name.equals("Menu")) {
@@ -33,6 +34,10 @@ class Screen {
         } else {
           play();
         }
-      }
-    
+
+        for (Button b : activeButtons) {
+          b.show();
+        }
+
     }
+}
