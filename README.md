@@ -16,9 +16,13 @@ game itself, including music and graphics.
 ### 5/15/16 <br />
 -Created more screens <br />
 -Started work on space shooter minigame <br />
+-Started work on menu screen <br />
 ### 5/16/16 <br />
 -Fixed enemy targeting bugs with minigame <br />
 -Fixed game end screen
+### 5/17/16 <br />
+-Able to slow / delay certain functions <br />
+
 ### 5/19/16 <br />
 -Got money counter to display
 -Started working on getting upgrades to work
