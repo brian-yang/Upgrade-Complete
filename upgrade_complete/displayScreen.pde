@@ -13,6 +13,7 @@ void store() {
   screenButtons.get(2).setPosition(200, 250);
   addActiveButtons(2);
   displayMoney();
+  storeUpgrades();
 }
 void menu() {
   screenButtons.get(1).setPosition(200, 250);  
@@ -37,6 +38,15 @@ void play() {
 void addActiveButtons(int index) {
   if (!activeButtons.contains(screenButtons.get(index))) {
     activeButtons.add(screenButtons.get(index));
+  }
+}
+
+void storeUpgrades() {
+  for (Button b : upgradeButtons) {
+    if(!activeButtons.contains(b)) {
+      b.setPosition(.75 * width, .75 * height);
+      activeButtons.add(b);
+    }
   }
 }
 
