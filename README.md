@@ -24,5 +24,8 @@ game itself, including music and graphics.
 -Able to slow / delay certain functions <br />
 
 ### 5/19/16 <br />
--Got money counter to display
--Started working on getting upgrades to work
+-Got money counter to display <br />
+-Started working on getting upgrades to work <br />
+
+### 5/20/16 <br />
+-Started work on upgrade framework
