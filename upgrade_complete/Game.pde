@@ -7,6 +7,10 @@ class Game {
   int numEnemies;
   int timer;
   int enemyTimer;
+// ======================================================
+/* SETUP GAME */
+// ======================================================
+
 
   Game() {
     // Player
@@ -23,9 +27,9 @@ class Game {
     timer = 0;
   }
 
-  boolean isFinished() {
-    return enemyTimer >= numEnemies && activeEnemies.isEmpty();
-  }
+// ======================================================
+/* RUN GAME */
+// ======================================================
 
   void run() {
     drawPlayer();
@@ -36,6 +40,18 @@ class Game {
      */
     timer++;
   }
+
+// ======================================================
+/* WINNING CONDITION */
+// ======================================================
+
+  boolean isFinished() {
+    return enemyTimer >= numEnemies && activeEnemies.isEmpty();
+  }
+
+// ======================================================
+/* DRAW HELPER METHODS */
+// ======================================================
 
   void drawPlayer() {
     player.show();

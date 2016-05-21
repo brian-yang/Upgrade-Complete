@@ -15,8 +15,10 @@ void upgradeButtons() {
   for (String s : upgrades.keySet()) {
     upgradeButtons.add(
       controlP5.addButton(s)
-        .setLabel(s + "\n\nLevel: " + Integer.toString(upgrades.get(s)))
-        .setValue(upgrades.get(s))
+        .setLabel(s + "\n\nLevel: " + upgrades.get(s))
+        .setStringValue(Integer.toString(upgrades.get(s)))
+        // Used setStringValue instead of setValue because
+        // setValue gave a NoClassDefFound Error
     );
   }
   shapeUpgradeButtons();

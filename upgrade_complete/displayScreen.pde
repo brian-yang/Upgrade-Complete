@@ -1,6 +1,7 @@
 ArrayList<Button> activeButtons = new ArrayList<Button>(); // list of active buttons
-
-// SCREEN CUSTOMIZER FUNCTIONS
+// ======================================================
+/* SCREEN CUSTOMIZER FUNCTIONS */
+// ======================================================
 
 void welcome() {
   screenButtons.get(0)
@@ -34,7 +35,10 @@ void play() {
   }
 }
 
-// HELPER FUNCTIONS
+// ======================================================
+/* HELPER FUNCTIONS */
+// ======================================================
+
 void addActiveButtons(int index) {
   if (!activeButtons.contains(screenButtons.get(index))) {
     activeButtons.add(screenButtons.get(index));
@@ -42,10 +46,20 @@ void addActiveButtons(int index) {
 }
 
 void storeUpgrades() {
+  float widthMultiplier = .2;
+  float heightMultiplier = .5;
+  float startWidth = widthMultiplier * width;
+  float startHeight = heightMultiplier * height;
+  // Upgrade button placement
   for (Button b : upgradeButtons) {
     if(!activeButtons.contains(b)) {
-      b.setPosition(.75 * width, .75 * height);
+      b.setPosition(startWidth, startHeight);
       activeButtons.add(b);
+      // Calculate button placement
+      widthMultiplier += .1;
+      heightMultiplier += .1;
+      startWidth = widthMultiplier * width;
+      startHeight = heightMultiplier * height;
     }
   }
 }
@@ -53,7 +67,7 @@ void storeUpgrades() {
 void endGame() {
   if (gameMode == 1) {
     money += 50;
-  } // forces money to be added once
+  } // forces money to be added once per game
   gameMode = 0;
 }
 

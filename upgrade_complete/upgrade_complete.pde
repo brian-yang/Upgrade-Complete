@@ -47,13 +47,20 @@ void draw() {
 
 // similar to keyPressed but specifically for controlP5 elements
 void controlEvent(ControlEvent event) {
-  if (event.getController().getId() == 0) {
+  Controller c = event.getController();
+  if (c.getId() == 0) {
     // System.out.println(event.getController().getName());
     setScreen("Store");
-  } else if (event.getController().getId() == 1) {
+  } else if (c.getId() == 1) {
     // System.out.println(event.getController().getName());
-    setScreen(event.getController().getName());
+    setScreen(c.getName());
+  } else if (c.getId() == 2) {
+    int curValue = Integer.parseInt((c.getStringValue()));
+    c.setStringValue(Integer.toString(curValue + 1));
+    c.setLabel(c.getName() + "\n\nLevel: " + c.getStringValue());
+    upgrades.put(c.getName(), Integer.parseInt(c.getStringValue()));
   }
+    
 }
 
 void mousePressed() {
@@ -68,7 +75,7 @@ void mousePressed() {
 
 // initializes screens
 void initializeScreens() {
-    screens = new HashMap < String, Screen > ();
+    screens = new HashMap <String, Screen> ();
     screens.put("Welcome", new Screen("Welcome"));
     screens.put("Store", new Screen("Store"));
     screens.put("Menu", new Screen("Menu"));
