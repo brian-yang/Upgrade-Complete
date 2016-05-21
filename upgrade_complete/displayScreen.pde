@@ -50,11 +50,13 @@ void storeUpgrades() {
   float heightMultiplier = .5;
   float startWidth = widthMultiplier * width;
   float startHeight = heightMultiplier * height;
+  
   // Upgrade button placement
   for (Button b : upgradeButtons) {
     if(!activeButtons.contains(b)) {
       b.setPosition(startWidth, startHeight);
       activeButtons.add(b);
+      
       // Calculate button placement
       widthMultiplier += .1;
       heightMultiplier += .1;
@@ -62,6 +64,7 @@ void storeUpgrades() {
       startHeight = heightMultiplier * height;
     }
   }
+
 }
 
 void endGame() {

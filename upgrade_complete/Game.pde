@@ -60,19 +60,23 @@ class Game {
   void drawEnemies() {
     enemyTimer = timer / 100;
     //System.out.println(enemyTimer); // test timer
+
     if (enemyTimer < numEnemies &&
         !activeEnemies.contains(enemies.get(enemyTimer)) &&
         !removedEnemies.contains(enemies.get(enemyTimer))) {
       activeEnemies.add(enemies.get(enemyTimer));
     }
+
     for (Enemy enemy : activeEnemies) {
       enemy.show();
     }
+
     for (Enemy enemy : activeEnemies) {
       enemy.setY(enemy.getY() + 1);
       //System.out.println(enemy.getY()); // test y coordinate of current enemy
     }
     //System.out.println(activeEnemies); // test how many enemies are being created
+
   }
   
   void destroyEnemies() {

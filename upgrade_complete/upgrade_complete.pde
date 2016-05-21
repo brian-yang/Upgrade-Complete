@@ -51,14 +51,19 @@ void controlEvent(ControlEvent event) {
   if (c.getId() == 0) {
     // System.out.println(event.getController().getName());
     setScreen("Store");
-  } else if (c.getId() == 1) {
+  } 
+  else if (c.getId() == 1) {
     // System.out.println(event.getController().getName());
     setScreen(c.getName());
-  } else if (c.getId() == 2) {
-    int curValue = Integer.parseInt((c.getStringValue()));
-    c.setStringValue(Integer.toString(curValue + 1));
-    c.setLabel(c.getName() + "\n\nLevel: " + c.getStringValue());
-    upgrades.put(c.getName(), Integer.parseInt(c.getStringValue()));
+  } 
+  else if (c.getId() == 2) {
+    if (money - 10 >= 0) {
+      int curValue = Integer.parseInt((c.getStringValue()));
+      c.setStringValue(Integer.toString(curValue + 1));
+      c.setLabel(c.getName() + "\n\nLevel: " + c.getStringValue());
+      upgrades.put(c.getName(), Integer.parseInt(c.getStringValue()));
+      money -= 10;
+    }
   }
     
 }

@@ -30,18 +30,16 @@ class Screen {
          //  }
          //  }
          welcome();
-         }
-         else if (name.equals("Store")) {
+         } else if (name.equals("Store")) {
           store();
         } else if (name.equals("Menu")) {
           menu();
         } else {
           play();
         }
-
+        
         for (Button b : activeButtons) {
           b.show();
         }
-
     }
 }

@@ -35,7 +35,7 @@ void shapeScreenButtons() {
 
 void shapeUpgradeButtons() {
   for (Button b : upgradeButtons) {
-    b.setSize(50, 100);
+    b.setSize(100, 100);
     b.setId(2);
     b.hide();
   }
