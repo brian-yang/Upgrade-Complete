@@ -1,14 +1,14 @@
 void fileParse(Map<String, Integer> dict, String file) {
-  Scanner f = new Scanner(file);
+  Scanner s = new Scanner(createReader(file));
   String line;
-  while (f.hasNextLine()) {
-    line = f.nextLine();
-    try {
-      dict.put(line.split(":")[0], 
-            Integer.parseInt(line.split(":")[1].trim()));
-    } catch (IndexOutOfBoundsException e) {
-      System.out.println(e.getMessage());
-    }
+  while (s.hasNextLine() && !(line = s.nextLine()).isEmpty()) {
+   println(Arrays.toString(line.split(":")));
+       try {
+         String[] data = line.split(":");
+         dict.put(data[0], Integer.parseInt(data[1].trim()));
+       } catch (IndexOutOfBoundsException e) {
+         System.out.println("ERROR: File parsing failed.");
+       }
   }
-  f.close();
+  s.close();
 }
