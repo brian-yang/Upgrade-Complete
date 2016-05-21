@@ -1,5 +1,6 @@
 import controlP5.*;
 import java.util.*;
+import java.io.*;
 
 ControlP5 controlP5;
 HashMap<String, Screen> screens;
@@ -30,7 +31,7 @@ void setup() {
 }
 
 void draw() {
-  timeElapsed = millis();
+   timeElapsed = millis();
    background(255);
    // FOR TESTING SCREEN CHANGES
    fill(30,100,200);
@@ -53,7 +54,6 @@ void controlEvent(ControlEvent event) {
     // System.out.println(event.getController().getName());
     setScreen(event.getController().getName());
   }
-  
 }
 
 void mousePressed() {
