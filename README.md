@@ -17,9 +17,11 @@ game itself, including music and graphics.
 * Created more screens
 * Started work on space shooter minigame
 * Started work on menu screen
+
 ### 5/16/16
 * Fixed enemy targeting bugs with minigame
 * Fixed game end screen
+
 ### 5/17/16
 * Able to slow / delay certain functions
 
