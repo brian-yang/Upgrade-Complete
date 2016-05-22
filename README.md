@@ -34,6 +34,7 @@ game itself, including music and graphics.
 * Set cash limit
 
 ### 5/21/16
+* Finished simplified Menu screen
 * Created buttons for upgrades
 * Allow players to buy upgrades
 * Work on getting background upgrades to work
