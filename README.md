@@ -1,4 +1,4 @@
-# Upgrade-Complete
+# Upgrade* Complete
 
 ## Team Min and Yang
 
@@ -8,30 +8,30 @@ spend money to upgrade several aspects of the
 game itself, including music and graphics.
 
 ## Development Log
-### 5/14/16 <br />
--Set up screen infrastructure <br />
--Tested controlP5 library <br />
--Made test buttons <br />
-<br />
-### 5/15/16 <br />
--Created more screens <br />
--Started work on space shooter minigame <br />
--Started work on menu screen <br />
-### 5/16/16 <br />
--Fixed enemy targeting bugs with minigame <br />
--Fixed game end screen
-### 5/17/16 <br />
--Able to slow / delay certain functions <br />
+### 5/14/16
+* Set up screen infrastructure
+* Tested controlP5 library
+* Made test buttons
 
-### 5/19/16 <br />
--Got money counter to display <br />
--Tested file parsing <br />
+### 5/15/16
+* Created more screens
+* Started work on space shooter minigame
+* Started work on menu screen
+### 5/16/16
+* Fixed enemy targeting bugs with minigame
+* Fixed game end screen
+### 5/17/16
+* Able to slow / delay certain functions
 
-### 5/20/16 <br />
--Started work on upgrade framework and save data in a text file <br />
--Set cash limit <br />
+### 5/19/16
+* Got money counter to display
+* Tested file parsing
 
-### 5/21/16 <br />
--Created buttons for upgrades <br />
--Allow players to buy upgrades <br />
--Work on getting background upgrades to work <br />
+### 5/20/16
+* Started work on upgrade framework and save data in a text file
+* Set cash limit
+
+### 5/21/16
+* Created buttons for upgrades
+* Allow players to buy upgrades
+* Work on getting background upgrades to work
