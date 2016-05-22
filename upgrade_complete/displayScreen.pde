@@ -5,8 +5,9 @@ ArrayList<Button> activeButtons = new ArrayList<Button>(); // list of active but
 
 void welcome() {
   screenButtons.get(0)
-    .setPosition(200, 350)
-    .setId(0);
+    .setPosition(200, 250)
+    .setId(0)
+    .setSize(100,100);
   addActiveButtons(0);
 }
 
