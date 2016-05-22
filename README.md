@@ -1,4 +1,4 @@
-# Upgrade* Complete
+# Upgrade Complete
 
 ## Team Min and Yang
 
