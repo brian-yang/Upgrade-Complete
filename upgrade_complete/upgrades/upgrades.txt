@@ -1,2 +1,5 @@
 Music:1
-Graphics:1
+Background:1
+Buttons:1
+Text:1
+Enemy & Player:1

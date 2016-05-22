@@ -32,7 +32,7 @@ void setup() {
 
 void draw() {
    timeElapsed = millis();
-   background(255);
+   backgroundGen();
    // FOR TESTING SCREEN CHANGES
    fill(30,100,200);
    textSize(100);
