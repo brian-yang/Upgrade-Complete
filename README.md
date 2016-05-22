@@ -25,7 +25,13 @@ game itself, including music and graphics.
 
 ### 5/19/16 <br />
 -Got money counter to display <br />
--Started working on getting upgrades to work <br />
+-Tested file parsing <br />
 
 ### 5/20/16 <br />
--Started work on upgrade framework
+-Started work on upgrade framework and save data in a text file <br />
+-Set cash limit <br />
+
+### 5/21/16 <br />
+-Created buttons for upgrades <br />
+-Allow players to buy upgrades <br />
+-Work on getting background upgrades to work <br />
