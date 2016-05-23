@@ -21,7 +21,7 @@ class Game {
     removedEnemies = new ArrayList<Enemy>();
     numEnemies = 5;
     for (int i = 0; i < numEnemies; i++) {
-      enemies.add(new Enemy((int) (Math.random() * width), 0));
+      enemies.add(new Enemy((int) (Math.random()* (width-100)), 0));
     }
     // Timer
     timer = 0;
