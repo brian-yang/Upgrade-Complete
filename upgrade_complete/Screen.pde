@@ -10,9 +10,9 @@ class Screen {
             fill(0);
             String welcome = "The aim of the game is to upgrade... EVERYTHING! You have to upgrade everything to truly win.";
             textSize(12);
-            text(welcome,200, 100, 300, 300);  // Text wraps within text box 
-            if (timeElapsed > 4000){
-              String store = "But if you want to buy something, you're gonna need a shop first. Would you like to start?";
+            text(welcome, 200, 100, 300, 300);  // Text wraps within text box 
+            if (timeElapsed > 4000){             
+              String store = "Are you ready to start?";
               textSize(16);
              text(store,200, 150, 300, 300);}  // Text wraps within text box
             // COMMENTED OUT TO MAKE SURE MASTER BRANCH WORKS - Brian
