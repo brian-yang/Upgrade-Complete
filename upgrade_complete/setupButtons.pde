@@ -7,7 +7,7 @@ void screenButtons() {
   screenButtons.add(controlP5.addButton("Play")); // 1
   screenButtons.add(controlP5.addButton("Menu")); // 2
   screenButtons.add(controlP5.addButton("Store")); // 3
-  screenButtons.add(controlP5.addButton("First")); //4
+  screenButtons.add(controlP5.addButton("Intro")); //4
   shapeScreenButtons();
 }
 

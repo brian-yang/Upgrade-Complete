@@ -8,6 +8,7 @@ String curScreen;
 int gameMode;
 int money;
 int timeElapsed;
+boolean introPassed;
 Game game;
 PImage bg;
 PImage player;
@@ -38,6 +39,7 @@ void setup() {
   player = loadImage("pictures/spaceship.png");
   enemyImage = loadImage("pictures/enemy.png");
   gameBG = loadImage("pictures/gameBG.png");
+  introPassed = false;
 }
 
 void draw() {
@@ -60,7 +62,11 @@ void controlEvent(ControlEvent event) {
   Controller c = event.getController();
   if (c.getId() == 0) {
     // System.out.println(event.getController().getName());
-    setScreen("Store");
+    if (c.getName().equals("Intro")) {
+      introPassed = true;
+    } else {
+      setScreen("Store");
+    }
   } 
   else if (c.getId() == 1) {
     // System.out.println(event.getController().getName());

@@ -6,11 +6,10 @@ void first() {
   screenButtons.get(4)
     .setPosition(200, 250)
     .setId(0)
-    .setSize(100,100);
+    .setSize(100,100)
+    .setLabel("Yes!");
   addActiveButtons(4);
-  }
-
-
+}
 
 void welcome() {
   screenButtons.get(0)
