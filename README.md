@@ -59,3 +59,8 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Created buttons for upgrades
 * Allow players to buy upgrades
 * Work on getting background upgrades to work
+
+### 5/22/16
+* Finished background upgrades
+* Worked on minigame graphics upgrades
+* Added laser as a weapon to minigame
