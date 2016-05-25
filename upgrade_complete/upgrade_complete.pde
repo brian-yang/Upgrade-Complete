@@ -9,12 +9,16 @@ int gameMode;
 int money;
 int timeElapsed;
 Game game;
+PImage bg;
+PImage player;
+PImage enemyImage;
+PImage gameBG;
 // ======================================================
 /* SETUP & DRAW */
 // ======================================================
 
 void setup() {
-  size(900, 1000);
+  size(1024,768);
   smooth();
   
   controlP5 = new ControlP5(this);
@@ -28,6 +32,12 @@ void setup() {
   curScreen = "Welcome";
   screens.get(curScreen).display(); // display Welcome screen
   money += 500;
+  
+  //load variables
+  bg = loadImage("pictures/space.jpg");
+  player = loadImage("pictures/spaceship.png");
+  enemyImage = loadImage("pictures/enemy.png");
+  gameBG = loadImage("pictures/gameBG.png");
 }
 
 void draw() {
@@ -62,8 +72,16 @@ void controlEvent(ControlEvent event) {
 }
 
 void mousePressed() {
+ if (gameMode > 0) {
+   game.shootLaser();
+ }
+}
+
+void mouseDragged() {
   if (gameMode > 0) {
-    game.destroyEnemies();
+    if (mousePressed) {
+      game.shootLaser();
+    }
   }
 }
 

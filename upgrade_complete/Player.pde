@@ -5,6 +5,16 @@ class Player extends Sprite {
   }
   
   void show() {
-    ellipse(x, y, 100, 100);
+    pushStyle();
+    ellipseMode(CENTER);
+    ellipse(x, y, spriteWidth, spriteHeight);
+    popStyle();
+  }
+  
+  void showHitBox() {
+    pushStyle();
+    rectMode(CENTER);
+    rect(x, y, spriteWidth, spriteHeight);
+    popStyle();
   }
 }

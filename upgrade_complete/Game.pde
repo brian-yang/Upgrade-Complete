@@ -14,7 +14,7 @@ class Game {
 
   Game() {
     // Player
-    player = new Player(width / 2, height / 2);
+    player = new Player(width / 2, height - 100);
     // Enemies
     enemies = new ArrayList<Enemy>();
     activeEnemies = new ArrayList<Enemy>();
@@ -54,7 +54,7 @@ class Game {
 // ======================================================
 
   void drawPlayer() {
-    player.show();
+    showPlayer();
   }
 
   void drawEnemies() {
@@ -68,7 +68,7 @@ class Game {
     }
 
     for (Enemy enemy : activeEnemies) {
-      enemy.show();
+      showEnemy(enemy, enemy.getX(), enemy.getY());
     }
 
     for (Enemy enemy : activeEnemies) {
@@ -85,5 +85,16 @@ class Game {
         removedEnemies.add(activeEnemies.remove(i));
       }
     }
+  }
+  
+  void shootLaser() {
+    // Laser
+    pushStyle();
+    stroke(255, 0, 0);
+    strokeWeight(5);
+    line(player.getX(), player.getY(), mouseX, mouseY);
+    popStyle();
+    // Destroy Enemies
+    destroyEnemies();
   }
 }

@@ -5,9 +5,16 @@ class Enemy extends Sprite {
   }
 
   boolean isHovering() {
-    return mouseX > x && 
-           mouseX < (x + spriteWidth) && 
-           mouseY > y && 
-           mouseY < (y + spriteHeight);
+    return mouseX > (x - spriteWidth / 2) && 
+           mouseX < (x + spriteWidth / 2) && 
+           mouseY > (y - spriteWidth / 2) && 
+           mouseY < (y + spriteHeight / 2);
+  }
+  
+  void showHitBox() {
+    pushStyle();
+    rectMode(CENTER);
+    rect(x, y, spriteWidth, spriteHeight);
+    popStyle();
   }
 }

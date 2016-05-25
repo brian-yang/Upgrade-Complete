@@ -17,8 +17,11 @@ class Sprite {
   }
   
   void show() {
+     pushStyle();
      fill(10, 70, 100);
+     rectMode(CENTER);
      rect(x, y, spriteWidth, spriteHeight);
+     popStyle();
   }
 
   // Getters and setters

@@ -25,7 +25,7 @@ void menu() {
   addActiveButtons(3);
 }
 void play() {
-  background(0, 102, 204);
+  gameBackground();
   if (game.isFinished()) {
     background(0);
     endGame();
@@ -47,8 +47,8 @@ void addActiveButtons(int index) {
 }
 
 void storeUpgrades() {
-  float widthMultiplier = .2;
-  float heightMultiplier = .5;
+  float widthMultiplier = .05;
+  float heightMultiplier = .7;
   float startWidth = widthMultiplier * width;
   float startHeight = heightMultiplier * height;
   
@@ -59,8 +59,8 @@ void storeUpgrades() {
       activeButtons.add(b);
       
       // Calculate button placement
-      widthMultiplier += .1;
-      heightMultiplier += .1;
+      widthMultiplier += .2;
+      //heightMultiplier += .1;
       startWidth = widthMultiplier * width;
       startHeight = heightMultiplier * height;
     }
