@@ -64,3 +64,5 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Finished background upgrades
 * Worked on minigame graphics upgrades
 * Added laser as a weapon to minigame
+* Reposition sprites in minigame
+* Finish intro screen
