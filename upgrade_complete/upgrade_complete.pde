@@ -14,7 +14,7 @@ Game game;
 // ======================================================
 
 void setup() {
-  size(900, 800);
+  size(900, 768);
   smooth();
   
   controlP5 = new ControlP5(this);

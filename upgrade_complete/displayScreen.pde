@@ -2,10 +2,19 @@ ArrayList<Button> activeButtons = new ArrayList<Button>(); // list of active but
 // ======================================================
 /* SCREEN CUSTOMIZER FUNCTIONS */
 // ======================================================
+void first() {
+  screenButtons.get(4)
+    .setPosition(200, 250)
+    .setId(0)
+    .setSize(100,100);
+  addActiveButtons(4);
+  }
+
+
 
 void welcome() {
   screenButtons.get(0)
-    .setPosition(200, 250)
+    .setPosition(200, 450)
     .setId(0)
     .setSize(100,100);
   addActiveButtons(0);
