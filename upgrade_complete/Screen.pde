@@ -1,4 +1,6 @@
 class Screen {
+    int rectX, rectY; //position of first yes button
+    
     String name;
     Screen(String screenName) {
       name = screenName;
@@ -17,7 +19,10 @@ class Screen {
              text(store,200, 150, 300, 300);}  // Text wraps within text box
             // COMMENTED OUT TO MAKE SURE MASTER BRANCH WORKS - Brian
             if (timeElapsed > 6000 && timeElapsed <= 6050){ 
-              welcome();
+              first();
+            welcome();}
+            //  if (timeElapsed > 3000 && timeElapsed <= 3050{   ****after first button resets millis to 0
+           //   welcome();}
               // controlP5.addButton("Yes1")
              //   .setPosition(200, 250)
               //  .setSize(64, 32);
@@ -28,7 +33,7 @@ class Screen {
          
           //if (timeElapsed > 6000) {
          //    welcome();
-           }
+      //     }
           
          
          } else if (name.equals("Store")) {
