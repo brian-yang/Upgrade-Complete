@@ -1,4 +1,5 @@
 ArrayList<Button> activeButtons = new ArrayList<Button>(); // list of active buttons
+
 // ======================================================
 /* SCREEN CUSTOMIZER FUNCTIONS */
 // ======================================================
@@ -33,13 +34,20 @@ void menu() {
   addActiveButtons(3);
 }
 void play() {
-  if (game.isFinished()) {
-    background(0);
-    endGame();
+  if (game.isFinished() && game.passEnemies.isEmpty()){
+    level += 1;
     screenButtons.get(1).setLabel("Level" + level);
+  }
+  
+  if (game.isFinished()) {
+     background(0);
+    endGame();
     screenButtons.get(2).setPosition(200, 250);
     addActiveButtons(2);
-  } else {
+   
+     
+  }
+  else {
     game.run();
   }
 }

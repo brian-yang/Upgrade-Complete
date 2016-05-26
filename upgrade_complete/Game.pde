@@ -4,6 +4,7 @@ class Game {
   ArrayList<Enemy> enemies;
   ArrayList<Enemy> activeEnemies;
   ArrayList<Enemy> removedEnemies;
+  ArrayList<Enemy> passEnemies;
   int numEnemies;
   int timer;
   int enemyTimer;
@@ -19,6 +20,7 @@ class Game {
     enemies = new ArrayList<Enemy>();
     activeEnemies = new ArrayList<Enemy>();
     removedEnemies = new ArrayList<Enemy>();
+    passEnemies = new ArrayList<Enemy>();
     numEnemies = 5;
     for (int i = 0; i < numEnemies; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0));
@@ -35,6 +37,7 @@ class Game {
     gameBackground();
     drawPlayer();
     drawEnemies();
+    passingEnemies();
     /*  We created our own timer
      *  because the built-in timing functions
      *  were buggy.
@@ -47,9 +50,9 @@ class Game {
 // ======================================================
 
   boolean isFinished() {
-    return removedEnemies.size()== numEnemies && activeEnemies.isEmpty();
+    return (removedEnemies.size() + passEnemies.size() == numEnemies) && activeEnemies.isEmpty();
   }
-
+  
 // ======================================================
 /* DRAW HELPER METHODS */
 // ======================================================
@@ -84,6 +87,7 @@ class Game {
     for (int i = 0; i < activeEnemies.size(); i++) {
       if (activeEnemies.get(i).isHovering()) {
         removedEnemies.add(activeEnemies.remove(i));
+        
       }
     }
   }
@@ -97,5 +101,14 @@ class Game {
     popStyle();
     // Destroy Enemies
     destroyEnemies();
+  }
+  void passingEnemies(){
+    for (int i = 0; i < activeEnemies.size(); i++) {
+  if (activeEnemies.get(i).getY() >= 768){
+    println("passed");
+    passEnemies.add(activeEnemies.get(i));
+    activeEnemies.remove(activeEnemies.get(i));
+    }
+    }
   }
 }
