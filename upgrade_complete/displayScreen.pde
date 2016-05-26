@@ -66,7 +66,7 @@ void storeUpgrades() {
       activeButtons.add(b);
       
       // Calculate button placement
-      widthMultiplier += .2;
+      widthMultiplier += .15;
       //heightMultiplier += .1;
       startWidth = widthMultiplier * width;
       startHeight = heightMultiplier * height;

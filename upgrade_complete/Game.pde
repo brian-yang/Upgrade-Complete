@@ -34,6 +34,7 @@ class Game {
   void run() {
     gameBackground();
     drawPlayer();
+    playerFlex();
     drawEnemies();
     /*  We created our own timer
      *  because the built-in timing functions

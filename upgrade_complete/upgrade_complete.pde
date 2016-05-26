@@ -9,6 +9,7 @@ int gameMode;
 int money;
 int timeElapsed;
 boolean introPassed;
+boolean[] keys;
 Game game;
 PImage bg;
 PImage player;
@@ -39,6 +40,7 @@ void setup() {
   player = loadImage("pictures/spaceship.png");
   enemyImage = loadImage("pictures/enemy.png");
   gameBG = loadImage("pictures/gameBG.png");
+  keys = new boolean[255];
   introPassed = false;
 }
 
@@ -77,6 +79,14 @@ void controlEvent(ControlEvent event) {
   }
 }
 
+void keyPressed() {
+  keys[keyCode] = true;
+}
+
+void keyReleased() {
+  keys[keyCode] = false;
+}
+
 void mousePressed() {
  if (gameMode > 0) {
    game.shootLaser();
@@ -85,9 +95,7 @@ void mousePressed() {
 
 void mouseDragged() {
   if (gameMode > 0) {
-    if (mousePressed) {
-      game.shootLaser();
-    }
+    game.shootLaser();
   }
 }
 
