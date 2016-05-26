@@ -60,6 +60,7 @@ void draw() {
 // ======================================================
 
 // similar to keyPressed but specifically for controlP5 elements
+
 void controlEvent(ControlEvent event) {
   Controller c = event.getController();
   if (c.getId() == 0) {
@@ -73,6 +74,7 @@ void controlEvent(ControlEvent event) {
   else if (c.getId() == 1) {
     // System.out.println(event.getController().getName());
     setScreen(c.getName());
+   
   } 
   else if (c.getId() == 2) {
     buyUpgrade(c);
