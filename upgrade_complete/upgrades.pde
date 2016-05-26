@@ -22,7 +22,6 @@ void showPlayer() {
 void showEnemy(Enemy enemy, float x, float y) {
   int enemyLevel = upgrades.get("Enemy & Player");
   if (enemyLevel == 2) {
-    enemy.showHitBox();
     enemyImage.resize(200,200);
     imageMode(CENTER);
     image(enemyImage, x, y);
@@ -37,5 +36,32 @@ void gameBackground() {
     background(gameBG);
   } else {
     background(0, 102, 204);
+  }
+}
+
+void playerFlex() {
+  int flex = upgrades.get("Player Flexibility");
+  if (flex >= 2) {
+    if (keys['A']) {
+      game.player.setX(game.player.getX() - 1);
+    }
+    if (keys['D']) {
+      game.player.setX(game.player.getX() + 1);
+    }
+    if (flex >= 3) {
+      if (keys['W']) {
+        game.player.setY(game.player.getY() - 1);
+      }
+      if (keys['S']) {
+        game.player.setY(game.player.getY() + 1);
+      }
+    }
+  }
+  // add acceleration
+}
+
+void weapons() {
+  int weaponLevel = upgrades.get("Weapons");
+  if (weaponLevel == 1) { 
   }
 }
