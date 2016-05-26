@@ -47,7 +47,7 @@ class Game {
 // ======================================================
 
   boolean isFinished() {
-    return enemyTimer >= numEnemies && activeEnemies.isEmpty();
+    return removedEnemies.size()== numEnemies && activeEnemies.isEmpty();
   }
 
 // ======================================================
