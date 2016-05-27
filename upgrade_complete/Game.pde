@@ -92,17 +92,7 @@ class Game {
       }
     }
   }
-  
-  void shootLaser() {
-    // Laser
-    pushStyle();
-    stroke(255, 0, 0);
-    strokeWeight(5);
-    line(player.getX(), player.getY(), mouseX, mouseY);
-    popStyle();
-    // Destroy Enemies
-    destroyEnemies();
-  }
+
   void passingEnemies(){
     for (int i = 0; i < activeEnemies.size(); i++) {
   if (activeEnemies.get(i).getY() >= 768){
@@ -111,5 +101,23 @@ class Game {
     activeEnemies.remove(activeEnemies.get(i));
     }
     }
+  }
+// ======================================================
+/* WEAPONS */
+// ======================================================  
+  void bullets() {
+    
+  }
+  
+  
+  void laser() {
+    // Laser
+    pushStyle();
+    stroke(255, 0, 0);
+    strokeWeight(5);
+    line(player.getX(), player.getY(), mouseX, mouseY);
+    popStyle();
+    // Destroy Enemies
+    destroyEnemies();
   }
 }

@@ -91,13 +91,13 @@ void keyReleased() {
 
 void mousePressed() {
  if (gameMode > 0) {
-   game.shootLaser();
+   game.laser();
  }
 }
 
 void mouseDragged() {
   if (gameMode > 0) {
-    game.shootLaser();
+    game.laser();
   }
 }
 

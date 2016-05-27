@@ -41,6 +41,12 @@ void gameBackground() {
 
 void playerFlex() {
   int flex = upgrades.get("Player Flexibility");
+  if (keys['Q']) {
+    game.player.rotateLeft();
+  }
+  if (keys['E']) {
+    game.player.rotateRight();
+  }
   if (flex >= 2) {
     if (keys['A']) {
       game.player.setX(game.player.getX() - 1);
@@ -62,6 +68,13 @@ void playerFlex() {
 
 void weapons() {
   int weaponLevel = upgrades.get("Weapons");
-  if (weaponLevel == 1) { 
+  if (weaponLevel == 1) {
+    game.bullets();
+  }
+  if (weaponLevel == 2) {
+    //game.strike();
+  }
+  if (weaponLevel == 3) {
+    game.laser();
   }
 }
