@@ -12,8 +12,12 @@ void backgroundGen() {
 void showPlayer() {
   int playerLevel = upgrades.get("Enemy & Player");
   if (playerLevel == 2) {
+    pushMatrix();
+    translate(game.player.getX(), game.player.getY());
+    rotate(-radians(game.player.angle));
     imageMode(CENTER);
-    image(player, game.player.getX(), game.player.getY());
+    image(player, 0, 0);
+    popMatrix();
   } else {
     game.player.show();
   }

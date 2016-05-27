@@ -8,14 +8,12 @@ class Player extends Sprite {
   
   void show() {
     pushMatrix();
-    translate(width / 2, height / 2);
-    rotate(radians(angle));
+    translate(x, y);
+    rotate(-radians(angle));
     pushStyle();
     rectMode(CENTER);
-    rect(x, y, spriteWidth, spriteHeight);
+    rect(0, 0, spriteWidth, spriteHeight);
     popStyle();
-    rotate(-radians(angle));
-    translate(-width/2, -height/2);
     popMatrix();
   }
   
