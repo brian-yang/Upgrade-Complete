@@ -21,7 +21,7 @@ class Game {
     activeEnemies = new ArrayList<Enemy>();
     removedEnemies = new ArrayList<Enemy>();
     passEnemies = new ArrayList<Enemy>();
-    numEnemies = 5;
+    numEnemies = 2;
     for (int i = 0; i < numEnemies; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0));
     }
@@ -51,7 +51,7 @@ class Game {
 // ======================================================
 
   boolean isFinished() {
-    return (removedEnemies.size() + passEnemies.size() == numEnemies) && activeEnemies.isEmpty();
+    return (removedEnemies.size() + passEnemies.size() == numEnemies);
   }
   
 // ======================================================

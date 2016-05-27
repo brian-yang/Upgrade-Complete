@@ -35,18 +35,23 @@ void menu() {
 }
 void play() {
   if (game.isFinished() && game.passEnemies.isEmpty()){
+    background(0);
+    System.out.println("received?");
     level += 1;
-    screenButtons.get(1).setLabel("Level" + level);
-  }
-  
-  if (game.isFinished()) {
-     background(0);
     endGame();
     screenButtons.get(2).setPosition(200, 250);
     addActiveButtons(2);
-   
-     
+    screenButtons.get(1).setLabel("Level" + level);
+    game.removedEnemies.remove(0);
   }
+   if (game.isFinished()){  
+     background(0);
+     endGame();
+    screenButtons.get(1).setLabel("Level" + level);
+     screenButtons.get(2).setPosition(200, 250);
+     addActiveButtons(2);
+   }
+  
   else {
     game.run();
   }
