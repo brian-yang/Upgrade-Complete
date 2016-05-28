@@ -8,6 +8,7 @@ class Game {
   int numEnemies;
   int timer;
   int enemyTimer;
+  Bullet bullet;
 // ======================================================
 /* SETUP GAME */
 // ======================================================
@@ -39,6 +40,8 @@ class Game {
     playerFlex();
     drawEnemies();
     passingEnemies();
+    bullets();
+    println("Player angle: " + player.getAngle());
     /*  We created our own timer
      *  because the built-in timing functions
      *  were buggy.
@@ -51,7 +54,8 @@ class Game {
 // ======================================================
 
   boolean isFinished() {
-    return (removedEnemies.size() + passEnemies.size() == numEnemies) && activeEnemies.isEmpty();
+    return false;
+    //return (removedEnemies.size() + passEnemies.size() == numEnemies) && activeEnemies.isEmpty();
   }
   
 // ======================================================
@@ -106,7 +110,13 @@ class Game {
 /* WEAPONS */
 // ======================================================  
   void bullets() {
-    
+    if (keys[' ']) {
+      if (bullet == null) {
+        bullet = new Bullet(player.getX(), player.getY(), player.getAngle());
+      }
+      bullet.show();
+      bullet.update();
+    }
   }
   
   
