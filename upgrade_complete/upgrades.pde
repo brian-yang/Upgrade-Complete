@@ -72,9 +72,6 @@ void playerFlex() {
 
 void weapons() {
   int weaponLevel = upgrades.get("Weapons");
-  if (weaponLevel == 1) {
-    game.bullets();
-  }
   if (weaponLevel == 2) {
     //game.strike();
   }

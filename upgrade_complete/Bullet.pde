@@ -7,7 +7,7 @@ class Bullet {
     PVector target = new PVector(x + 20 * cos(radians(-angle + 270)), y + 20 * sin(radians(-angle + 270)));
     velocity = PVector.sub(target, location);
     velocity.normalize();
-    velocity.mult(0.5);
+    velocity.mult(2);
   }
   
   void show() {

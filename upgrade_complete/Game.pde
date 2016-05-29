@@ -8,7 +8,7 @@ class Game {
   int numEnemies;
   int timer;
   int enemyTimer;
-  Bullet bullet;
+  Shooter shooter;
 // ======================================================
 /* SETUP GAME */
 // ======================================================
@@ -22,6 +22,7 @@ class Game {
     activeEnemies = new ArrayList<Enemy>();
     removedEnemies = new ArrayList<Enemy>();
     passEnemies = new ArrayList<Enemy>();
+    shooter = new Shooter(5);
     numEnemies = 5;
     for (int i = 0; i < numEnemies; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0));
@@ -40,7 +41,8 @@ class Game {
     playerFlex();
     drawEnemies();
     passingEnemies();
-    bullets();
+    shooter.show();
+    shooter.update();
     println("Player angle: " + player.getAngle());
     /*  We created our own timer
      *  because the built-in timing functions
@@ -99,26 +101,19 @@ class Game {
 
   void passingEnemies(){
     for (int i = 0; i < activeEnemies.size(); i++) {
-  if (activeEnemies.get(i).getY() >= 768){
-    println("passed");
-    passEnemies.add(activeEnemies.get(i));
-    activeEnemies.remove(activeEnemies.get(i));
-    }
+      if (activeEnemies.get(i).getY() >= 768){
+        println("passed");
+        passEnemies.add(activeEnemies.get(i));
+        activeEnemies.remove(activeEnemies.get(i));
+      }
     }
   }
 // ======================================================
 /* WEAPONS */
 // ======================================================  
-  void bullets() {
-    if (keys[' ']) {
-      if (bullet == null) {
-        bullet = new Bullet(player.getX(), player.getY(), player.getAngle());
-      }
-      bullet.show();
-      bullet.update();
-    }
+  void shoot() {
+    shooter.shoot(player.getX(), player.getY(), player.getAngle());
   }
-  
   
   void laser() {
     // Laser

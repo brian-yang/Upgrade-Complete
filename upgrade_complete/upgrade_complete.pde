@@ -83,6 +83,11 @@ void controlEvent(ControlEvent event) {
 
 void keyPressed() {
   keys[keyCode] = true;
+  if (keys[' ']) {
+    if (gameMode > 0) {
+      game.shoot();
+    }
+  } 
 }
 
 void keyReleased() {
