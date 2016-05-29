@@ -59,7 +59,7 @@ class Game {
   // ======================================================
 
   boolean isFinished() {
-    return (removedEnemies.size() + passEnemies.size() == NUM_ENEMIES) && activeEnemies.isEmpty();
+    return (removedEnemies.size() + passEnemies.size() == NUM_ENEMIES);
   }
 
   // ======================================================
