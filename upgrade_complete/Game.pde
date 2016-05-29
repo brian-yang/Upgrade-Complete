@@ -1,3 +1,7 @@
+final int NUM_ENEMIES = 5;
+final int SCREEN_WIDTH = 1024;
+final int SCREEN_HEIGHT = 768;
+
 class Game {
   // PImage player;
   Player player;
@@ -5,7 +9,6 @@ class Game {
   ArrayList<Enemy> activeEnemies;
   ArrayList<Enemy> removedEnemies;
   ArrayList<Enemy> passEnemies;
-  int numEnemies;
   int timer;
   int enemyTimer;
   Shooter shooter;
@@ -23,8 +26,7 @@ class Game {
     removedEnemies = new ArrayList<Enemy>();
     passEnemies = new ArrayList<Enemy>();
     shooter = new Shooter(5);
-    numEnemies = 5;
-    for (int i = 0; i < numEnemies; i++) {
+    for (int i = 0; i < NUM_ENEMIES; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0));
     }
     // Timer
@@ -72,7 +74,7 @@ class Game {
     enemyTimer = timer / 100;
     //System.out.println(enemyTimer); // test timer
 
-    if (enemyTimer < numEnemies &&
+    if (enemyTimer < NUM_ENEMIES &&
         !activeEnemies.contains(enemies.get(enemyTimer)) &&
         !removedEnemies.contains(enemies.get(enemyTimer))) {
       activeEnemies.add(enemies.get(enemyTimer));
@@ -101,7 +103,7 @@ class Game {
 
   void passingEnemies(){
     for (int i = 0; i < activeEnemies.size(); i++) {
-      if (activeEnemies.get(i).getY() >= 768){
+      if (activeEnemies.get(i).getY() >= SCREEN_HEIGHT){
         println("passed");
         passEnemies.add(activeEnemies.get(i));
         activeEnemies.remove(activeEnemies.get(i));

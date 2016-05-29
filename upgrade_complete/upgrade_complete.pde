@@ -110,12 +110,16 @@ void buyUpgrade(Controller c) {
     if (money - 10 >= 0) {
       // 1. Get current level of the upgrade
       int curValue = Integer.parseInt((c.getStringValue()));
+      
       // 2. Increment the level by one
       c.setStringValue(Integer.toString(curValue + 1));
+      
       // 3. Set the label of the button to the new level
       c.setLabel(c.getName() + "\n\nLevel: " + c.getStringValue());
+      
       // 4. Change the level in the upgrades dictionary
       upgrades.put(c.getName(), Integer.parseInt(c.getStringValue()));
+      
       // 5. Decrease the amount of money the player has
       money -= 10;
     }
