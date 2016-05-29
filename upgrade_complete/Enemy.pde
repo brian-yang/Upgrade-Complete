@@ -3,18 +3,22 @@ class Enemy extends Sprite {
   Enemy(float x, float y) {
     super(x, y);
   }
+  
+  boolean hasCollided(float x, float y) {
+    return x >= (this.x - spriteWidth / 2) && 
+           x <= (this.x + spriteWidth / 2) && 
+           y >= (this.y - spriteWidth / 2) && 
+           y <= (this.y + spriteHeight / 2);
+  }
 
-  boolean isHovering() {
-    return mouseX > (x - spriteWidth / 2) && 
-           mouseX < (x + spriteWidth / 2) && 
-           mouseY > (y - spriteWidth / 2) && 
-           mouseY < (y + spriteHeight / 2);
+  boolean laserShot() {
+    return hasCollided(mouseX, mouseY);
   }
   
   void showHitBox() {
     pushStyle();
-    rectMode(CENTER);
-    rect(x, y, spriteWidth, spriteHeight);
+    ellipseMode(CENTER);
+    ellipse(x, y, spriteWidth, spriteHeight);
     popStyle();
   }
 }

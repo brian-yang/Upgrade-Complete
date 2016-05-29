@@ -12,9 +12,9 @@ class Game {
   int timer;
   int enemyTimer;
   Shooter shooter;
-// ======================================================
-/* SETUP GAME */
-// ======================================================
+  // ======================================================
+  /* SETUP GAME */
+  // ======================================================
 
 
   Game() {
@@ -25,7 +25,7 @@ class Game {
     activeEnemies = new ArrayList<Enemy>();
     removedEnemies = new ArrayList<Enemy>();
     passEnemies = new ArrayList<Enemy>();
-    shooter = new Shooter(5);
+    shooter = new Shooter(100);
     for (int i = 0; i < NUM_ENEMIES; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0));
     }
@@ -33,19 +33,20 @@ class Game {
     timer = 0;
   }
 
-// ======================================================
-/* RUN GAME */
-// ======================================================
+  // ======================================================
+  /* RUN GAME */
+  // ======================================================
 
   void run() {
     gameBackground();
     drawPlayer();
     playerFlex();
     drawEnemies();
-    passingEnemies();
     shooter.show();
     shooter.update();
-    println("Player angle: " + player.getAngle());
+    destroyEnemies();
+    passingEnemies();
+    //println("Player angle: " + player.getAngle());
     /*  We created our own timer
      *  because the built-in timing functions
      *  were buggy.
@@ -53,18 +54,17 @@ class Game {
     timer++;
   }
 
-// ======================================================
-/* WINNING CONDITION */
-// ======================================================
+  // ======================================================
+  /* WINNING CONDITION */
+  // ======================================================
 
   boolean isFinished() {
-    return false;
-    //return (removedEnemies.size() + passEnemies.size() == numEnemies) && activeEnemies.isEmpty();
+    return (removedEnemies.size() + passEnemies.size() == NUM_ENEMIES) && activeEnemies.isEmpty();
   }
-  
-// ======================================================
-/* DRAW HELPER METHODS */
-// ======================================================
+
+  // ======================================================
+  /* DRAW HELPER METHODS */
+  // ======================================================
 
   void drawPlayer() {
     showPlayer();
@@ -75,8 +75,8 @@ class Game {
     //System.out.println(enemyTimer); // test timer
 
     if (enemyTimer < NUM_ENEMIES &&
-        !activeEnemies.contains(enemies.get(enemyTimer)) &&
-        !removedEnemies.contains(enemies.get(enemyTimer))) {
+      !activeEnemies.contains(enemies.get(enemyTimer)) &&
+      !removedEnemies.contains(enemies.get(enemyTimer))) {
       activeEnemies.add(enemies.get(enemyTimer));
     }
 
@@ -89,34 +89,51 @@ class Game {
       //System.out.println(enemy.getY()); // test y coordinate of current enemy
     }
     //System.out.println(activeEnemies); // test how many enemies are being created
-
   }
-  
+
   void destroyEnemies() {
+    boolean removed = false;
     for (int i = 0; i < activeEnemies.size(); i++) {
-      if (activeEnemies.get(i).isHovering()) {
+      removed = shootDestroy(activeEnemies.get(i));
+      if (!removed) {
+        removed = laserDestroy(activeEnemies.get(i));
+      }
+      if (removed) {
         removedEnemies.add(activeEnemies.remove(i));
-        
+        i--;
+        removed = false;
       }
     }
   }
 
-  void passingEnemies(){
+  void passingEnemies() {
     for (int i = 0; i < activeEnemies.size(); i++) {
-      if (activeEnemies.get(i).getY() >= SCREEN_HEIGHT){
+      if (activeEnemies.get(i).getY() >= SCREEN_HEIGHT) {
         println("passed");
         passEnemies.add(activeEnemies.get(i));
         activeEnemies.remove(activeEnemies.get(i));
       }
     }
   }
-// ======================================================
-/* WEAPONS */
-// ======================================================  
+  // ======================================================
+  /* WEAPONS */
+  // ======================================================  
   void shoot() {
     shooter.shoot(player.getX(), player.getY(), player.getAngle());
   }
-  
+
+  boolean shootDestroy(Enemy enemy) {
+    println(shooter.bullets.size());
+    for (int j = 0; j < shooter.bullets.size(); j++) {
+      if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY()))
+      {
+        shooter.bullets.remove(j);
+        return true;
+      }
+    }
+    return false;
+  }
+
   void laser() {
     // Laser
     pushStyle();
@@ -124,7 +141,9 @@ class Game {
     strokeWeight(5);
     line(player.getX(), player.getY(), mouseX, mouseY);
     popStyle();
-    // Destroy Enemies
-    destroyEnemies();
+  }
+
+  boolean laserDestroy(Enemy enemy) {
+    return enemy.laserShot();
   }
 }

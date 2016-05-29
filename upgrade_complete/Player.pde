@@ -15,8 +15,6 @@ class Player extends Sprite {
     rect(0, 0, spriteWidth, spriteHeight);
     popStyle();
     popMatrix();
-    rectMode(CENTER);
-    rect(x + 10 * cos(radians(-angle + 270)), y + 10 * sin(radians(-angle + 270)), 10, 10);
   }
   
   void rotateLeft() {
@@ -38,5 +36,10 @@ class Player extends Sprite {
     rectMode(CENTER);
     rect(x, y, spriteWidth, spriteHeight);
     popStyle();
+  }
+  
+  void showShooterPointer() {
+    rectMode(CENTER);
+    rect(x + 10 * cos(radians(-angle + 270)), y + 10 * sin(radians(-angle + 270)), 10, 10);
   }
 }

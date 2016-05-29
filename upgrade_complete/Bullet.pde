@@ -7,13 +7,13 @@ class Bullet {
     PVector target = new PVector(x + 20 * cos(radians(-angle + 270)), y + 20 * sin(radians(-angle + 270)));
     velocity = PVector.sub(target, location);
     velocity.normalize();
-    velocity.mult(2);
+    velocity.mult(5);
   }
   
   void show() {
     pushStyle();
     ellipseMode(CENTER);
-    ellipse(location.x, location.y, 50, 50);
+    ellipse(location.x, location.y, 20, 20);
     popStyle();
   }
   
@@ -35,5 +35,13 @@ class Bullet {
       location.y = height;
     }
   
+  }
+  
+  float getX() {
+    return location.x;
+  } 
+  
+  float getY() {
+    return location.y;
   }
 }

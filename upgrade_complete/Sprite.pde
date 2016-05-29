@@ -29,4 +29,6 @@ class Sprite {
   void setY(float y) { this.y = y; }
   float getX() { return x; }
   float getY() { return y; }
+  float getSpriteWidth() { return spriteWidth; }
+  float getSpriteHeight() { return spriteHeight; }
 }

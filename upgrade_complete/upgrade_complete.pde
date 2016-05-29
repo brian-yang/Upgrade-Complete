@@ -20,13 +20,13 @@ PImage gameBG;
 // ======================================================
 
 void setup() {
-  size(1024,768);
+  size(1024, 768);
   smooth();
-  
+
   controlP5 = new ControlP5(this);
-  
+
   initializeScreens(); // initializes all screens
-  
+
   // implemented in setupButtons tab
   screenButtons();
   upgradeButtons();
@@ -34,7 +34,7 @@ void setup() {
   curScreen = "Welcome";
   screens.get(curScreen).display(); // display Welcome screen
   money += 500;
-  
+
   //load variables
   bg = loadImage("pictures/space.jpg");
   player = loadImage("pictures/spaceship.png");
@@ -45,14 +45,19 @@ void setup() {
 }
 
 void draw() {
-   timeElapsed = millis();
-   backgroundGen();
-   // FOR TESTING SCREEN CHANGES
-   fill(30,100,200);
-   textSize(100);
-   text(curScreen, 50, 100);
-   // ==========================
-   screens.get(curScreen).display(); // display current screen
+  timeElapsed = millis();
+  backgroundGen();
+  // FOR TESTING SCREEN CHANGES
+  fill(30, 100, 200);
+  textSize(100);
+  text(curScreen, 50, 100);
+  // ==========================
+  screens.get(curScreen).display(); // display current screen
+  // ==========================
+  // Put laser here to stop laser lag
+  if (mousePressed && gameMode > 0) {
+    game.laser();
+  }
 }
 
 // ======================================================
@@ -70,13 +75,10 @@ void controlEvent(ControlEvent event) {
     } else {
       setScreen("Store");
     }
-  } 
-  else if (c.getId() == 1) {
+  } else if (c.getId() == 1) {
     // System.out.println(event.getController().getName());
     setScreen(c.getName());
-   
-  } 
-  else if (c.getId() == 2) {
+  } else if (c.getId() == 2) {
     buyUpgrade(c);
   }
 }
@@ -87,42 +89,44 @@ void keyPressed() {
     if (gameMode > 0) {
       game.shoot();
     }
-  } 
+  }
 }
 
 void keyReleased() {
   keys[keyCode] = false;
 }
 
-void mousePressed() {
- if (gameMode > 0) {
-   game.laser();
- }
-}
+//void mousePressed() {
+//  if (gameMode > 0) {
+//    game.laser();
+//    game.destroyEnemies();
+//  }
+//}
 
-void mouseDragged() {
-  if (gameMode > 0) {
-    game.laser();
-  }
-}
+//void mouseDragged() {
+//  if (gameMode > 0) {
+//    game.laser();
+//    game.destroyEnemies();
+//  }
+//}
 
 void buyUpgrade(Controller c) {
-    if (money - 10 >= 0) {
-      // 1. Get current level of the upgrade
-      int curValue = Integer.parseInt((c.getStringValue()));
-      
-      // 2. Increment the level by one
-      c.setStringValue(Integer.toString(curValue + 1));
-      
-      // 3. Set the label of the button to the new level
-      c.setLabel(c.getName() + "\n\nLevel: " + c.getStringValue());
-      
-      // 4. Change the level in the upgrades dictionary
-      upgrades.put(c.getName(), Integer.parseInt(c.getStringValue()));
-      
-      // 5. Decrease the amount of money the player has
-      money -= 10;
-    }
+  if (money - 10 >= 0) {
+    // 1. Get current level of the upgrade
+    int curValue = Integer.parseInt((c.getStringValue()));
+
+    // 2. Increment the level by one
+    c.setStringValue(Integer.toString(curValue + 1));
+
+    // 3. Set the label of the button to the new level
+    c.setLabel(c.getName() + "\n\nLevel: " + c.getStringValue());
+
+    // 4. Change the level in the upgrades dictionary
+    upgrades.put(c.getName(), Integer.parseInt(c.getStringValue()));
+
+    // 5. Decrease the amount of money the player has
+    money -= 10;
+  }
 }
 
 // ======================================================
@@ -131,22 +135,22 @@ void buyUpgrade(Controller c) {
 
 // initializes screens
 void initializeScreens() {
-    screens = new HashMap <String, Screen> ();
-    screens.put("Welcome", new Screen("Welcome"));
-    screens.put("Store", new Screen("Store"));
-    screens.put("Menu", new Screen("Menu"));
-    screens.put("Play", new Screen("Play"));
+  screens = new HashMap <String, Screen> ();
+  screens.put("Welcome", new Screen("Welcome"));
+  screens.put("Store", new Screen("Store"));
+  screens.put("Menu", new Screen("Menu"));
+  screens.put("Play", new Screen("Play"));
 }
 
 // sets the current screen
 void setScreen(String name) {
-    curScreen = name;
-    for (Button b : activeButtons) {
-      b.hide();
-    }
-    activeButtons.clear();
-    if (name.equals("Play")) {
-      game = new Game();
-      gameMode = 1;
-    }
+  curScreen = name;
+  for (Button b : activeButtons) {
+    b.hide();
+  }
+  activeButtons.clear();
+  if (name.equals("Play")) {
+    game = new Game();
+    gameMode = 1;
+  }
 }

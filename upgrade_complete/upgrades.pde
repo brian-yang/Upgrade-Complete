@@ -31,6 +31,7 @@ void showEnemy(Enemy enemy, float x, float y) {
     image(enemyImage, x, y);
   } else {
     enemy.show();
+    //enemy.showHitBox();
   }
 }
 
