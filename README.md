@@ -20,13 +20,14 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Allow users to buy items in the shop [Done]
 * Get intro screen to explain the game [Done]
 * Get the following upgrades to work:
-  * Backgrounds [In progress]
+  * Backgrounds [Done]
+  * Player movement [In progress]
+  * Weapons [In progress]
   * Music
   * Fonts
   * Sprites
   * Button Appearance
 * Make minigame shooter more complex (eg, have user protect a base)
-* Possibly allow user to upgrade weapons if we have time
 
 ## Development Log
 ### 5/14/16
@@ -72,3 +73,20 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Added laser as a weapon to minigame
 * Reposition sprites in minigame
 * Finish intro screen
+
+### 5/26/16
+* Updated winning condition
+* Worked on different levels
+* Worked on player movement upgrades & weapon upgrades
+
+### 5/27/16
+* Level increased on win
+* Gave the player the ability to rotate and move
+
+### 5/28/16
+* Got shooter to shoot in the same direction player is facing
+
+### 5/29/16
+* Got collision detection to work for bullets
+* Got shooter to shoot several bullets
+* Added constants
