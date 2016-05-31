@@ -1,5 +1,5 @@
 ArrayList<Button> activeButtons = new ArrayList<Button>(); // list of active buttons
-
+boolean gameover = true;
 // ======================================================
 /* SCREEN CUSTOMIZER FUNCTIONS */
 // ======================================================
@@ -34,7 +34,7 @@ void menu() {
   addActiveButtons(3);
 }
 void play() {
-  if (game.isFinished() && game.passEnemies.isEmpty()){
+  if (game.isFinished() && game.passEnemies.isEmpty() && gameover == false){
     background(0);
     System.out.println("received?");
     level += 1;
@@ -42,7 +42,7 @@ void play() {
     screenButtons.get(2).setPosition(200, 250);
     addActiveButtons(2);
     screenButtons.get(1).setLabel("Level" + level);
-    game.removedEnemies.remove(0);
+    gameover = true;
   }
    if (game.isFinished()){  
      background(0);
@@ -50,8 +50,8 @@ void play() {
     screenButtons.get(1).setLabel("Level" + level);
      screenButtons.get(2).setPosition(200, 250);
      addActiveButtons(2);
+     gameover = true;
    }
-  
   else {
     game.run();
   }

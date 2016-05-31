@@ -1,5 +1,4 @@
 class Enemy extends Sprite {
-  int health;
   Enemy(float x, float y) {
     super(x, y);
   }

@@ -1,6 +1,6 @@
-int NUM_ENEMIES = 5;
+int NUM_ENEMIES = 1;
 int level = 0;
-int health = 5;
+
 final int SCREEN_WIDTH = 1024;
 final int SCREEN_HEIGHT = 768;
 
@@ -20,8 +20,7 @@ class Game {
 
 
   Game() {
-    health = 5;
-    NUM_ENEMIES = 5;
+    
     NUM_ENEMIES += (level / 2);
     
     // Player
@@ -134,15 +133,9 @@ class Game {
       if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY()))
       {
         enemy.health -= 1;
-        println(enemy.health);
-        System.out.println("health-");
-        if (enemy.health <= 0){
-          System.out.println("dropped < 0");
-          shooter.bullets.remove(j);
-          return true;
+        shooter.bullets.remove(j);
+        return true;
       }
-      return false;
-    }
     }
     return false;
   }

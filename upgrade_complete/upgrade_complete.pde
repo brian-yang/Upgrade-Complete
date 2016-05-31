@@ -152,5 +152,6 @@ void setScreen(String name) {
   if (name.equals("Play")) {
     game = new Game();
     gameMode = 1;
+    gameover = false;
   }
 }
