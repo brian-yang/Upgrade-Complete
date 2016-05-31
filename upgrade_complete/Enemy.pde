@@ -12,7 +12,7 @@ class Enemy extends Sprite {
   }
 
   boolean laserShot() {
-    return hasCollided(mouseX, mouseY);
+    return mousePressed && hasCollided(mouseX, mouseY);
   }
   
   void showHitBox() {

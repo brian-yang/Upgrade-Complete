@@ -76,7 +76,8 @@ class Game {
 
     if (enemyTimer < NUM_ENEMIES &&
       !activeEnemies.contains(enemies.get(enemyTimer)) &&
-      !removedEnemies.contains(enemies.get(enemyTimer))) {
+      !removedEnemies.contains(enemies.get(enemyTimer)) &&
+      !passEnemies.contains(enemies.get(enemyTimer))) {
       activeEnemies.add(enemies.get(enemyTimer));
     }
 

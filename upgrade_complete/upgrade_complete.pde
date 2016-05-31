@@ -54,9 +54,9 @@ void draw() {
   // ==========================
   screens.get(curScreen).display(); // display current screen
   // ==========================
-  // Put laser here to stop laser lag
   if (mousePressed && gameMode > 0) {
-    game.laser();
+     game.laser();
+     game.destroyEnemies();
   }
 }
 
