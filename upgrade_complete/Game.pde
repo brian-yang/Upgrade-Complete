@@ -147,4 +147,27 @@ class Game {
   boolean laserDestroy(Enemy enemy) {
     return enemy.laserShot();
   }
+  
+// Check if there are any active enemies first  
+
+  Enemy closestEnemy() {
+    Enemy closest = null;
+    float distance = 0;
+    for (Enemy e : activeEnemies) {
+      float enemyDistance = dist(e.getX(), e.getY(), player.getX(), player.getY());
+      if (enemyDistance > distance) {
+        distance = enemyDistance;
+        closest = e;
+      }
+    }
+    return closest;
+  }
+  
+  float getLightningAngle() {
+    Enemy closest = closestEnemy();
+    if (closest == null) {
+      return 0;
+    }
+    return PVector.angleBetween(player.location, closest.location);
+  }
 }

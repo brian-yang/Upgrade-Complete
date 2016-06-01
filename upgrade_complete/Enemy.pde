@@ -5,10 +5,10 @@ class Enemy extends Sprite {
   }
   
   boolean hasCollided(float x, float y) {
-    return x >= (this.x - spriteWidth / 2) && 
-           x <= (this.x + spriteWidth / 2) && 
-           y >= (this.y - spriteWidth / 2) && 
-           y <= (this.y + spriteHeight / 2);
+    return x >= (this.location.x - spriteWidth / 2) && 
+           x <= (this.location.x + spriteWidth / 2) && 
+           y >= (this.location.y - spriteWidth / 2) && 
+           y <= (this.location.y + spriteHeight / 2);
   }
 
   boolean laserShot() {
@@ -18,7 +18,7 @@ class Enemy extends Sprite {
   void showHitBox() {
     pushStyle();
     ellipseMode(CENTER);
-    ellipse(x, y, spriteWidth, spriteHeight);
+    ellipse(location.x, location.y, spriteWidth, spriteHeight);
     popStyle();
   }
 }
