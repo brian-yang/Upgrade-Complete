@@ -3,9 +3,6 @@ class Enemy extends Sprite {
     super(x, y);
   }
   
-  int getHealth(){
-    return health;}
-  
   boolean hasCollided(float x, float y) {
     return x >= (this.x - spriteWidth / 2) && 
            x <= (this.x + spriteWidth / 2) && 

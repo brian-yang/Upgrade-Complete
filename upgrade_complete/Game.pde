@@ -1,4 +1,4 @@
-int NUM_ENEMIES = 1;
+int NUM_ENEMIES = 3;
 int level = 0;
 
 final int SCREEN_WIDTH = 1024;
@@ -130,12 +130,14 @@ class Game {
   boolean shootDestroy(Enemy enemy) {
     println(shooter.bullets.size());
     for (int j = 0; j < shooter.bullets.size(); j++) {
-      if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY()))
-      {
+      if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())&&enemy.health <= 1){
+        shooter.bullets.remove(j);
+        return true;}
+      else {if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())){
         enemy.health -= 1;
         shooter.bullets.remove(j);
-        return true;
       }
+      }   
     }
     return false;
   }
