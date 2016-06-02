@@ -12,6 +12,7 @@ class Game {
   int timer;
   int enemyTimer;
   Shooter shooter;
+  Lightning lightning;
   // ======================================================
   /* SETUP GAME */
   // ======================================================
@@ -26,6 +27,7 @@ class Game {
     removedEnemies = new ArrayList<Enemy>();
     passEnemies = new ArrayList<Enemy>();
     shooter = new Shooter(100);
+    lightning = new Lightning(player.getX(), player.getY());
     for (int i = 0; i < NUM_ENEMIES; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0));
     }
@@ -44,6 +46,7 @@ class Game {
     drawEnemies();
     shooter.show();
     shooter.update();
+    flashEnemies();
     destroyEnemies();
     passingEnemies();
     //println("Player angle: " + player.getAngle());
@@ -149,6 +152,18 @@ class Game {
   }
   
 // Check if there are any active enemies first  
+  void flashEnemies() {
+    if (activeEnemies.size() > 0) {
+      Enemy e = closestEnemy();
+      lightning.show(e.getX() + e.spriteWidth/2,
+                     e.getY() + e.spriteHeight/2,
+                     player.getX() + player.spriteWidth/2,
+                     player.getY() + player.spriteHeight/2,
+                     getLightningAngle(e));
+      lightning.reset(player.getX(), player.getY());
+    }
+  }
+
 
   Enemy closestEnemy() {
     Enemy closest = null;
@@ -163,8 +178,7 @@ class Game {
     return closest;
   }
   
-  float getLightningAngle() {
-    Enemy closest = closestEnemy();
+  float getLightningAngle(Enemy closest) {
     if (closest == null) {
       return 0;
     }
