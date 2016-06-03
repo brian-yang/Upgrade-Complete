@@ -1,7 +1,7 @@
 ArrayList<Button> screenButtons = new ArrayList<Button>(); // list of buttons related to screen changing
 ArrayList<Button> upgradeButtons = new ArrayList<Button>(); // list of buttons related to upgrades
 Map<String, Integer> upgrades = new HashMap<String, Integer>(); // upgrades and level of upgrades
-int level = 0;
+
 void screenButtons() {
   screenButtons.add(controlP5.addButton("Start!")); // 0
   screenButtons.add(controlP5.addButton("Play")); // 1

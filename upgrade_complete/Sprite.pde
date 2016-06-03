@@ -2,12 +2,20 @@ class Sprite {
   float x, y;
   float spriteWidth;
   float spriteHeight;
-  
+  int health;
+
   Sprite(float x, float y) {
     this.x = x;
     this.y = y;
     spriteWidth = 100;
     spriteHeight = 100;
+  }
+  Sprite(float x, float y, int health){
+    this(x, y);
+    this.health = health;
+    spriteWidth = 100;
+    spriteHeight = 100;
+    health = 3;
   }
   
   Sprite(float x, float y, float w, float h) {
@@ -31,4 +39,5 @@ class Sprite {
   float getY() { return y; }
   float getSpriteWidth() { return spriteWidth; }
   float getSpriteHeight() { return spriteHeight; }
+  int getHealth(){ return health;}
 }

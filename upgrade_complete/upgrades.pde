@@ -22,7 +22,7 @@ void showPlayer() {
     game.player.show();
   }
 }
-
+//---------------------------------------This thing has to change constructor
 void showEnemy(Enemy enemy, float x, float y) {
   int enemyLevel = upgrades.get("Enemy & Player");
   if (enemyLevel == 2) {
