@@ -90,3 +90,9 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Got collision detection to work for bullets
 * Got shooter to shoot several bullets
 * Added constants
+
+### 6/2/16
+* Got the number of enemies to increase per level
+
+### 6/3/16 
+* Got the health of enemies to increase per level
