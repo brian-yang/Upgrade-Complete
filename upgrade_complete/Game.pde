@@ -1,5 +1,5 @@
 int NUM_ENEMIES = 3;
-int level = 0;
+int level = 1;
 
 final int SCREEN_WIDTH = 1024;
 final int SCREEN_HEIGHT = 768;
@@ -32,7 +32,7 @@ class Game {
     passEnemies = new ArrayList<Enemy>();
     shooter = new Shooter(100);
     for (int i = 0; i < NUM_ENEMIES; i++) {
-      enemies.add(new Enemy((int) (Math.random()* (width-100)), 0));
+      enemies.add(new Enemy((int) (Math.random()* (width-100)), 0, level));
     }
     // Timer
     timer = 0;

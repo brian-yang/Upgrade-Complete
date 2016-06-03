@@ -1,6 +1,6 @@
 class Enemy extends Sprite {
-  Enemy(float x, float y) {
-    super(x, y);
+  Enemy(float x, float y, int health){
+    super(x,y,health);
   }
   
   boolean hasCollided(float x, float y) {
