@@ -8,7 +8,7 @@ class Player extends Sprite {
   
   void show() {
     pushMatrix();
-    translate(x, y);
+    translate(location.x, location.y);
     rotate(-radians(angle));
     pushStyle();
     rectMode(CENTER);
@@ -33,13 +33,13 @@ class Player extends Sprite {
   
   void showHitBox() {
     pushStyle();
-    rectMode(CENTER);
-    rect(x, y, spriteWidth, spriteHeight);
+    ellipseMode(CENTER);
+    ellipse(location.x, location.y, spriteWidth, spriteHeight);
     popStyle();
   }
   
   void showShooterPointer() {
     rectMode(CENTER);
-    rect(x + 10 * cos(radians(-angle + 270)), y + 10 * sin(radians(-angle + 270)), 10, 10);
+    rect(location.x + 10 * cos(radians(-angle + 270)), location.y + 10 * sin(radians(-angle + 270)), 10, 10);
   }
 }

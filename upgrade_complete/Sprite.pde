@@ -1,16 +1,15 @@
 class Sprite {
-  float x, y;
+  PVector location;
   float spriteWidth;
   float spriteHeight;
-  int health;
+  float health;
 
   Sprite(float x, float y) {
-    this.x = x;
-    this.y = y;
+    location = new PVector(x, y);
     spriteWidth = 100;
     spriteHeight = 100;
   }
-  Sprite(float x, float y, int health){
+  Sprite(float x, float y, float health){
     this(x, y);
     this.health = health;
     spriteWidth = 100;
@@ -28,16 +27,16 @@ class Sprite {
      pushStyle();
      fill(10, 70, 100);
      rectMode(CENTER);
-     rect(x, y, spriteWidth, spriteHeight);
+     rect(location.x, location.y, spriteWidth, spriteHeight);
      popStyle();
   }
 
   // Getters and setters
-  void setX(float x) { this.x = x; }
-  void setY(float y) { this.y = y; }
-  float getX() { return x; }
-  float getY() { return y; }
+  void setX(float x) { this.location.x = x; }
+  void setY(float y) { this.location.y = y; }
+  float getX() { return location.x; }
+  float getY() { return location.y; }
   float getSpriteWidth() { return spriteWidth; }
   float getSpriteHeight() { return spriteHeight; }
-  int getHealth(){ return health;}
+  float getHealth(){ return health;}
 }

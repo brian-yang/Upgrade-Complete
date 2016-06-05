@@ -1,15 +1,14 @@
-<<<<<<< HEAD
 class Enemy extends Sprite {
 
-  Enemy(float x, float y, int health) {
+  Enemy(float x, float y, float health) {
     super(x, y, health);
   }
   
   boolean hasCollided(float x, float y) {
-    return x >= (this.x - spriteWidth / 2) && 
-           x <= (this.x + spriteWidth / 2) && 
-           y >= (this.y - spriteWidth / 2) && 
-           y <= (this.y + spriteHeight / 2);
+    return x >= (this.location.x - spriteWidth / 2) && 
+           x <= (this.location.x + spriteWidth / 2) && 
+           y >= (this.location.y - spriteWidth / 2) && 
+           y <= (this.location.y + spriteHeight / 2);
   }
 
   boolean laserShot() {
@@ -19,31 +18,7 @@ class Enemy extends Sprite {
   void showHitBox() {
     pushStyle();
     ellipseMode(CENTER);
-    ellipse(x, y, spriteWidth, spriteHeight);
+    ellipse(location.x, location.y, spriteWidth, spriteHeight);
     popStyle();
   }
-=======
-class Enemy extends Sprite {
-  Enemy(float x, float y, int health){
-    super(x,y,health);
-  }
-  
-  boolean hasCollided(float x, float y) {
-    return x >= (this.x - spriteWidth / 2) && 
-           x <= (this.x + spriteWidth / 2) && 
-           y >= (this.y - spriteWidth / 2) && 
-           y <= (this.y + spriteHeight / 2);
-  }
-
-  boolean laserShot() {
-    return hasCollided(mouseX, mouseY);
-  }
-  
-  void showHitBox() {
-    pushStyle();
-    ellipseMode(CENTER);
-    ellipse(x, y, spriteWidth, spriteHeight);
-    popStyle();
-  }
->>>>>>> ming-you
 }
