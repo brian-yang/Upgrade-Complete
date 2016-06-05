@@ -1,4 +1,4 @@
-final int NUM_ENEMIES = 1;
+final int NUM_ENEMIES = 10;
 final int SCREEN_WIDTH = 1024;
 final int SCREEN_HEIGHT = 768;
 
@@ -46,7 +46,7 @@ class Game {
     drawEnemies();
     shooter.show();
     shooter.update();
-    flashEnemies();
+    lightning();
     destroyEnemies();
     passingEnemies();
     //println("Player angle: " + player.getAngle());
@@ -71,7 +71,6 @@ class Game {
 
   void drawPlayer() {
     showPlayer();
-    player.showHitBox();
   }
 
   void drawEnemies() {
@@ -153,16 +152,10 @@ class Game {
   }
   
 // Check if there are any active enemies first  
-  void flashEnemies() {
+  void lightning() {
     if (activeEnemies.size() > 0) {
       Enemy e = closestEnemy();
-      e.showHitBox();
-      println("Angle: " + degrees(getLightningAngle(e)));
-      lightning.show(e.getX() + e.spriteWidth/2,
-                     e.getY() + e.spriteHeight/2,
-                     player.getX() + player.spriteWidth/2,
-                     player.getY() + player.spriteHeight/2,
-                     getLightningAngle(e));
+      flashLightning(e);
       lightning.reset(player.getX(), player.getY());
     }
   }
@@ -182,11 +175,30 @@ class Game {
   }
   
   float getLightningAngle(Enemy closest) {
-    float angle = atan2(mouseY - player.getY(), mouseX - player.getX());
+    float angle = atan2(closest.getY() - player.getY(), closest.getX() - player.getX());
     angle += PI;
     if (angle < 0) {
       angle += TWO_PI;
     }
     return angle;
+  }
+  
+  void flashLightning(Enemy e) {
+    float x1, y1, x2, y2;
+    if (e.getX() <= player.getX()) {
+      x1 = e.getX() - e.getSpriteWidth() / 8;
+      x2 = player.getX() + player.getSpriteWidth() / 8;
+    } else {
+      x1 = player.getX() - player.getSpriteWidth() / 8;
+      x2 = e.getX() + e.getSpriteWidth() / 8;
+    }
+    if (e.getY() <= player.getY()) {
+      y1 = e.getY() - e.getSpriteHeight() / 8;
+      y2 = player.getY() + player.getSpriteHeight() / 8;
+    } else {
+      y1 = player.getY() - player.getSpriteHeight() / 8;
+      y2 = e.getY() + e.spriteHeight / 8;
+    }
+    lightning.show(x1, y1, x2, y2, getLightningAngle(e));
   }
 }

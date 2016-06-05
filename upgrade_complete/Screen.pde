@@ -11,7 +11,7 @@ class Screen {
             String welcome = "The aim of the game is to upgrade... EVERYTHING! You have to upgrade everything to truly win.";
             textSize(12);
             text(welcome, 200, 100, 300, 300);  // Text wraps within text box 
-            if (timeElapsed > 4000){             
+            if (timeElapsed > 3000){             
               String store = "Are you ready to start?";
               textSize(16);
               text(store,200, 150, 300, 300);
