@@ -37,9 +37,13 @@ class Lightning {
       lightningX = playerX - straightJump * cos(theta + angle);
       lightningY = playerY - straightJump * sin(theta + angle);
       
+      pushStyle();
+      
       strokeWeight(5);
       
       line(playerX, playerY, lightningX, lightningY);
+      
+      popStyle();
 
       playerX = lightningX;
       playerY = lightningY;

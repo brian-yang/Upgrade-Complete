@@ -155,6 +155,8 @@ class Game {
   void flashEnemies() {
     if (activeEnemies.size() > 0) {
       Enemy e = closestEnemy();
+      e.showHitBox();
+      println(degrees(getLightningAngle(e)));
       lightning.show(e.getX() + e.spriteWidth/2,
                      e.getY() + e.spriteHeight/2,
                      player.getX() + player.spriteWidth/2,
@@ -167,10 +169,10 @@ class Game {
 
   Enemy closestEnemy() {
     Enemy closest = null;
-    float distance = 0;
+    float distance = -1;
     for (Enemy e : activeEnemies) {
       float enemyDistance = dist(e.getX(), e.getY(), player.getX(), player.getY());
-      if (enemyDistance > distance) {
+      if (enemyDistance < distance || distance == -1) {
         distance = enemyDistance;
         closest = e;
       }
@@ -179,9 +181,6 @@ class Game {
   }
   
   float getLightningAngle(Enemy closest) {
-    if (closest == null) {
-      return 0;
-    }
     return PVector.angleBetween(player.location, closest.location);
   }
 }
