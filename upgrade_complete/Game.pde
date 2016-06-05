@@ -1,4 +1,4 @@
-final int NUM_ENEMIES = 5;
+final int NUM_ENEMIES = 1;
 final int SCREEN_WIDTH = 1024;
 final int SCREEN_HEIGHT = 768;
 
@@ -71,6 +71,7 @@ class Game {
 
   void drawPlayer() {
     showPlayer();
+    player.showHitBox();
   }
 
   void drawEnemies() {
@@ -127,7 +128,7 @@ class Game {
   }
 
   boolean shootDestroy(Enemy enemy) {
-    println(shooter.bullets.size());
+    //println(shooter.bullets.size());
     for (int j = 0; j < shooter.bullets.size(); j++) {
       if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY()))
       {
@@ -156,7 +157,7 @@ class Game {
     if (activeEnemies.size() > 0) {
       Enemy e = closestEnemy();
       e.showHitBox();
-      println(degrees(getLightningAngle(e)));
+      println("Angle: " + degrees(getLightningAngle(e)));
       lightning.show(e.getX() + e.spriteWidth/2,
                      e.getY() + e.spriteHeight/2,
                      player.getX() + player.spriteWidth/2,
@@ -168,7 +169,7 @@ class Game {
 
 
   Enemy closestEnemy() {
-    Enemy closest = null;
+    Enemy closest = activeEnemies.get(0);
     float distance = -1;
     for (Enemy e : activeEnemies) {
       float enemyDistance = dist(e.getX(), e.getY(), player.getX(), player.getY());
@@ -181,6 +182,11 @@ class Game {
   }
   
   float getLightningAngle(Enemy closest) {
-    return PVector.angleBetween(player.location, closest.location);
+    float angle = atan2(mouseY - player.getY(), mouseX - player.getX());
+    angle += PI;
+    if (angle < 0) {
+      angle += TWO_PI;
+    }
+    return angle;
   }
 }

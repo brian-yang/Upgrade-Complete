@@ -33,8 +33,8 @@ class Player extends Sprite {
   
   void showHitBox() {
     pushStyle();
-    rectMode(CENTER);
-    rect(location.x, location.y, spriteWidth, spriteHeight);
+    ellipseMode(CENTER);
+    ellipse(location.x, location.y, spriteWidth, spriteHeight);
     popStyle();
   }
   
