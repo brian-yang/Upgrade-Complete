@@ -1,8 +1,8 @@
+int NUM_ENEMIES = 3;
+int level = 1;
+
 final int SCREEN_WIDTH = 1024;
 final int SCREEN_HEIGHT = 768;
-
-int numEnemies = 3;
-int level = 1;
 
 class Game {
   // PImage player;
@@ -14,15 +14,15 @@ class Game {
   int timer;
   int enemyTimer;
   Shooter shooter;
-  Lightning lightning;
   // ======================================================
   /* SETUP GAME */
   // ======================================================
 
 
   Game() {
-    
-    numEnemies += (level / 2);
+    song1.loop();
+    song1.play();
+    NUM_ENEMIES += (level / 2);
     
     // Player
     player = new Player(width / 2, height - 100);
@@ -32,8 +32,7 @@ class Game {
     removedEnemies = new ArrayList<Enemy>();
     passEnemies = new ArrayList<Enemy>();
     shooter = new Shooter(100);
-    lightning = new Lightning(player.getX(), player.getY());
-    for (int i = 0; i < numEnemies; i++) {
+    for (int i = 0; i < NUM_ENEMIES; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0, level));
     }
     // Timer
@@ -50,7 +49,6 @@ class Game {
     drawEnemies();
     shooter.show();
     shooter.update();
-    lightning();
     destroyEnemies();
     passingEnemies();
     //println("Player angle: " + player.getAngle());
@@ -66,7 +64,7 @@ class Game {
   // ======================================================
 
   boolean isFinished() {
-    return (removedEnemies.size() + passEnemies.size() == numEnemies);
+    return (removedEnemies.size() + passEnemies.size() == NUM_ENEMIES);
   }
 
   // ======================================================
@@ -81,10 +79,9 @@ class Game {
     enemyTimer = timer / 100;
     //System.out.println(enemyTimer); // test timer
 
-    if (enemyTimer < numEnemies &&
+    if (enemyTimer < NUM_ENEMIES &&
       !activeEnemies.contains(enemies.get(enemyTimer)) &&
-      !removedEnemies.contains(enemies.get(enemyTimer)) &&
-      !passEnemies.contains(enemies.get(enemyTimer))) {
+      !removedEnemies.contains(enemies.get(enemyTimer))) {
       activeEnemies.add(enemies.get(enemyTimer));
     }
 
@@ -109,6 +106,8 @@ class Game {
       if (removed) {
         removedEnemies.add(activeEnemies.remove(i));
         i--;
+        boom.rewind();
+        boom.play();
         removed = false;
       }
     }
@@ -126,15 +125,13 @@ class Game {
   }
   // ======================================================
   /* WEAPONS */
-  // ======================================================
-  
-  // Shooter
+  // ======================================================  
   void shoot() {
     shooter.shoot(player.getX(), player.getY(), player.getAngle());
   }
 
   boolean shootDestroy(Enemy enemy) {
-    //println(shooter.bullets.size());
+    println(shooter.bullets.size());
     for (int j = 0; j < shooter.bullets.size(); j++) {
       if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())&&enemy.health <= 1){
         shooter.bullets.remove(j);
@@ -148,7 +145,6 @@ class Game {
     return false;
   }
 
-  // Laser
   void laser() {
     // Laser
     pushStyle();
@@ -156,65 +152,11 @@ class Game {
     strokeWeight(5);
     line(player.getX(), player.getY(), mouseX, mouseY);
     popStyle();
+    laser.rewind();
+    laser.play();
   }
 
   boolean laserDestroy(Enemy enemy) {
     return enemy.laserShot();
-  }
-
-  // Lightning
-  void lightning() {
-    if (activeEnemies.size() > 0) {
-      Enemy e = closestEnemy();
-      flashLightning(e);
-      e.health -= 0.005;
-      println(e.health);
-      if (e.health <= 0) {
-        activeEnemies.remove(e);
-        removedEnemies.add(e);
-      }
-      lightning.reset(player.getX(), player.getY());
-    }
-  }
-
-  Enemy closestEnemy() {
-    Enemy closest = activeEnemies.get(0);
-    float distance = -1;
-    for (Enemy e : activeEnemies) {
-      float enemyDistance = dist(e.getX(), e.getY(), player.getX(), player.getY());
-      if (enemyDistance < distance || distance == -1) {
-        distance = enemyDistance;
-        closest = e;
-      }
-    }
-    return closest;
-  }
-  
-  float getLightningAngle(Enemy closest) {
-    float angle = atan2(closest.getY() - player.getY(), closest.getX() - player.getX());
-    angle += PI;
-    if (angle < 0) {
-      angle += TWO_PI;
-    }
-    return angle;
-  }
-  
-  void flashLightning(Enemy e) {
-    float x1, y1, x2, y2;
-    if (e.getX() <= player.getX()) {
-      x1 = e.getX() - e.getSpriteWidth() / 8;
-      x2 = player.getX() + player.getSpriteWidth() / 8;
-    } else {
-      x1 = player.getX() - player.getSpriteWidth() / 8;
-      x2 = e.getX() + e.getSpriteWidth() / 8;
-    }
-    if (e.getY() <= player.getY()) {
-      y1 = e.getY() - e.getSpriteHeight() / 8;
-      y2 = player.getY() + player.getSpriteHeight() / 8;
-    } else {
-      y1 = player.getY() - player.getSpriteHeight() / 8;
-      y2 = e.getY() + e.spriteHeight / 8;
-    }
-    lightning.show(x1, y1, x2, y2, getLightningAngle(e));
   }
 }
