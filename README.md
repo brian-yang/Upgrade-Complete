@@ -22,11 +22,9 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Get the following upgrades to work:
   * Backgrounds [Done]
   * Player movement [In progress]
-  * Weapons [In progress]
-  * Music
-  * Fonts
-  * Sprites
-  * Button Appearance
+  * Weapons [Done]
+  * Music [In progress]
+  * Sprites [Done]
 * Make minigame shooter more complex (eg, have user protect a base)
 
 ## Development Log
@@ -91,12 +89,24 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Got shooter to shoot several bullets
 * Added constants
 
+### 5/31/16
+* Fix hovering over enemies bug
+
+### 6/1/16
+* Experiment with lightning animation
+
 ### 6/2/16
 * Got the number of enemies to increase per level
+* Work on incorporating lightning into game
 
-### 6/3/16 
+### 6/3/16
 * Got the health of enemies to increase per level
 
-###6/5
+### 6/4/16
+* Fix lightning targeting enemy bug
+
+### 6/5/16
 * Added soundtrack, and sound effects for guns
 * Added explosion sound when enemy dies
+* Calculate lightning angle
+* Get lightning to automatically target enemies
