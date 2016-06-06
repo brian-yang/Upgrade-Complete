@@ -35,6 +35,7 @@ void menu() {
 }
 void play() {
   if (game.isFinished() && game.passEnemies.isEmpty() && gameover == false){
+    song1.pause();
     background(0);
     System.out.println("received?");
     level += 1;
@@ -44,7 +45,8 @@ void play() {
     screenButtons.get(1).setLabel("Level" + level);
     gameover = true;
   }
-   if (game.isFinished()){  
+   if (game.isFinished()){
+     song1.pause();
      background(0);
      endGame();
     screenButtons.get(1).setLabel("Level" + level);

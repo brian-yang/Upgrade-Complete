@@ -1,6 +1,7 @@
 import controlP5.*;
 import java.util.*;
 import java.io.*;
+import ddf.minim.*;
 
 ControlP5 controlP5;
 HashMap<String, Screen> screens;
@@ -15,6 +16,14 @@ PImage bg;
 PImage player;
 PImage enemyImage;
 PImage gameBG;
+AudioPlayer bullet;
+AudioPlayer electricity;
+AudioPlayer laser;
+AudioPlayer song1;
+AudioPlayer song2;
+AudioPlayer boom;
+Minim minim;
+
 // ======================================================
 /* SETUP & DRAW */
 // ======================================================
@@ -22,7 +31,13 @@ PImage gameBG;
 void setup() {
   size(1024, 768);
   smooth();
-
+  minim = new Minim(this);
+  bullet = minim.loadFile("sound/bullet.wav");
+  electricity = minim.loadFile("sound/electricity.wav");
+  laser = minim.loadFile("sound/laser.wav");
+  song1 = minim.loadFile("sound/song1.mp3");
+  song2 = minim.loadFile("sound/song2.mp3");
+  boom = minim.loadFile("sound/boom.wav");
   controlP5 = new ControlP5(this);
 
   initializeScreens(); // initializes all screens
@@ -67,7 +82,7 @@ void draw() {
 // similar to keyPressed but specifically for controlP5 elements
 
 void controlEvent(ControlEvent event) {
-  Controller c = event.getController();
+  controlP5.Controller c = event.getController();
   if (c.getId() == 0) {
     // System.out.println(event.getController().getName());
     if (c.getName().equals("Intro")) {
@@ -87,10 +102,13 @@ void keyPressed() {
   keys[keyCode] = true;
   if (keys[' ']) {
     if (gameMode > 0) {
+      bullet.rewind();
+      bullet.play();
       game.shoot();
+      }
+      }
     }
-  }
-}
+
 
 void keyReleased() {
   keys[keyCode] = false;
@@ -110,7 +128,7 @@ void keyReleased() {
 //  }
 //}
 
-void buyUpgrade(Controller c) {
+void buyUpgrade(controlP5.Controller c) {
   if (money - 10 >= 0) {
     // 1. Get current level of the upgrade
     int curValue = Integer.parseInt((c.getStringValue()));

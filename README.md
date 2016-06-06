@@ -96,3 +96,7 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 
 ### 6/3/16 
 * Got the health of enemies to increase per level
+
+###6/5
+* Added soundtrack, and sound effects for guns
+* Added explosion sound when enemy dies
