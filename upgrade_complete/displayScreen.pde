@@ -1,5 +1,6 @@
 ArrayList<Button> activeButtons = new ArrayList<Button>(); // list of active buttons
 boolean gameover = true;
+boolean won = false;
 // ======================================================
 /* SCREEN CUSTOMIZER FUNCTIONS */
 // ======================================================
@@ -33,10 +34,12 @@ void menu() {
   addActiveButtons(1);
   addActiveButtons(3);
 }
+
+
 void play() {
   if (game.isFinished() && game.passEnemies.isEmpty() && gameover == false){
     song1.pause();
-    background(0);
+    won = true;
     System.out.println("received?");
     level += 1;
     endGame();
@@ -47,15 +50,21 @@ void play() {
   }
    if (game.isFinished()){
      song1.pause();
-     background(0);
+     background(255);
      endGame();
     screenButtons.get(1).setLabel("Level" + level);
      screenButtons.get(2).setPosition(200, 250);
      addActiveButtons(2);
      gameover = true;
+     if (won == false){
+       textSize(32);
+        fill(0);
+        text("lost",500 ,500 );
+   }
    }
   else {
     game.run();
+    won = false;
   }
 }
 
@@ -83,7 +92,7 @@ void storeUpgrades() {
       
       // Calculate button placement
       widthMultiplier += .15;
-      //heightMultiplier += .1;
+      //heightMultiplier += .1;  
       startWidth = widthMultiplier * width;
       startHeight = heightMultiplier * height;
     }

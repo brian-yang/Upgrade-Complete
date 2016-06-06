@@ -117,7 +117,7 @@ class Game {
   void passingEnemies() {
     for (int i = 0; i < activeEnemies.size(); i++) {
       if (activeEnemies.get(i).getY() >= SCREEN_HEIGHT) {
-        println("passed");
+        System.out.println("passed");
         passEnemies.add(activeEnemies.get(i));
         activeEnemies.remove(activeEnemies.get(i));
       }
