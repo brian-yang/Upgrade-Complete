@@ -108,5 +108,4 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 ### 6/5/16
 * Added soundtrack, and sound effects for guns
 * Added explosion sound when enemy dies
-* Calculate lightning angle
 * Get lightning to automatically target enemies
