@@ -8,7 +8,14 @@ void backgroundGen() {
     background(255);
   }
 }
-
+void musicPlayer() {
+  int musicLevel = upgrades.get("Music");
+  if (musicLevel > 1){
+    musicPlayable = true;
+    
+  }
+}
+  
 void showPlayer() {
   int playerLevel = upgrades.get("Enemy & Player");
   if (playerLevel == 2) {

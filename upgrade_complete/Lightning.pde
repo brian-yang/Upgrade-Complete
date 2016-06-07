@@ -25,6 +25,11 @@ class Lightning {
   void show(float xBound1, float yBound1, float xBound2, float yBound2, float offsetAngle) {
     while((lightningY >= yBound1 && lightningY <= yBound2) && 
           (lightningX >= xBound1 && lightningX <= xBound2)) {
+            if (musicPlayable == true){
+            electricity.play();
+            electricity.rewind();
+            }
+            
       
       angle += plusOrMinus() * random(PI/15, PI/10);
       if (angle > MAX_ANGLE) {

@@ -21,8 +21,11 @@ class Game {
 
 
   Game() {
+    
+    if (musicPlayable == true){
     song1.loop();
     song1.play();
+    }
     NUM_ENEMIES += (level / 2);
     
     // Player
@@ -110,8 +113,10 @@ class Game {
       if (removed) {
         removedEnemies.add(activeEnemies.remove(i));
         i--;
+        if (musicPlayable == true){
         boom.rewind();
         boom.play();
+      }
         removed = false;
       }
     }
@@ -156,8 +161,10 @@ class Game {
     strokeWeight(5);
     line(player.getX(), player.getY(), mouseX, mouseY);
     popStyle();
+    if (musicPlayable == true){
     laser.rewind();
     laser.play();
+  }
   }
 
   boolean laserDestroy(Enemy enemy) {
