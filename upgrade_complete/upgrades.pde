@@ -90,6 +90,13 @@ void weapons() {
   }
 }
 
+void musicPlayer() {
+  int musicLevel = curUpgradeLevels.get("Music");
+  if (musicLevel > 1){
+    musicPlayable = true;
+  }
+}
+
 void textUpgrade() {
   controlP5.setFont(controlBetterFont);
 }

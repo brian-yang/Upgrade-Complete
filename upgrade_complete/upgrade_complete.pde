@@ -10,6 +10,7 @@ int gameMode;
 int money;
 int timeElapsed;
 boolean introPassed;
+boolean musicPlayable;
 boolean[] keys;
 Game game;
 PImage bg;
@@ -68,6 +69,7 @@ void setup() {
 void draw() {
   timeElapsed = millis();
   backgroundGen();
+  musicPlayer();
   // FOR TESTING SCREEN CHANGES
   fill(30, 100, 200);
   textSize(100);
@@ -108,8 +110,10 @@ void keyPressed() {
   keys[keyCode] = true;
   if (keys[' ']) {
     if (gameMode > 0) {
-      bullet.rewind();
-      bullet.play();
+      if (musicPlayable) {
+        bullet.rewind();
+        bullet.play();
+      }
       game.shoot();
     }
   }

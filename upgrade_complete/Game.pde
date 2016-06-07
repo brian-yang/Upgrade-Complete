@@ -21,8 +21,10 @@ class Game {
 
 
   Game() {
-    song1.loop();
-    song1.play();
+    if (musicPlayable == true){
+      song1.loop();
+      song1.play();
+    }
     NUM_ENEMIES += (level / 2);
     
     // Player
@@ -115,8 +117,10 @@ class Game {
       if (shootDestroy(activeEnemies.get(i))) {
         removedEnemies.add(activeEnemies.remove(i));
         i--;
-        boom.rewind();
-        boom.play();
+        if (musicPlayable) {
+          boom.rewind();
+          boom.play();
+        }
       }
     }
   }
@@ -167,16 +171,20 @@ class Game {
     strokeWeight(5);
     line(player.getX(), player.getY(), mouseX, mouseY);
     popStyle();
-    laser.rewind();
-    laser.play();
+    if (musicPlayable) {
+      laser.rewind();
+      laser.play();
+    }
   }
 
   void laserDestroy() {
     for (int i = 0; i < activeEnemies.size(); i++) {
       if (activeEnemies.get(i).laserShot()) {
         removedEnemies.add(activeEnemies.remove(i));
-        boom.rewind();
-        boom.play();
+        if (musicPlayable) {
+          boom.rewind();
+          boom.play();
+        }
         i--;
       }
     }
@@ -192,8 +200,10 @@ class Game {
       if (e.health <= 0) {
         activeEnemies.remove(e);
         removedEnemies.add(e);
-        boom.rewind();
-        boom.play();
+        if (musicPlayable) {
+          boom.rewind();
+          boom.play();
+        }
       }
       lightning.reset(player.getX(), player.getY());
     }

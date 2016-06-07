@@ -40,6 +40,7 @@ void play() {
   if (game.isFinished() && game.passEnemies.isEmpty() && gameover == false){
     song1.pause();
     won = true;
+    
     System.out.println("received?");
     level += 1;
     endGame();
@@ -50,6 +51,7 @@ void play() {
   }
    if (game.isFinished()){
      song1.pause();
+     electricity.pause();
      background(255);
      endGame();
     screenButtons.get(1).setLabel("Level: " + level);
@@ -59,7 +61,12 @@ void play() {
      if (won == false){
        textSize(32);
         fill(0);
-        text("lost",500 ,500 );
+        text("You lost.",500 ,500 );
+   } else {
+   
+    textSize(100);
+    fill(255, 204, 0);
+    text("You Win!!!",400, 500);
    }
    }
   else {
