@@ -40,6 +40,8 @@ void setup() {
   song2 = minim.loadFile("sound/song2.mp3");
   boom = minim.loadFile("sound/boom.wav");
   controlP5 = new ControlP5(this);
+  controlP5.setFont(new ControlFont(createFont("Comic Sans MS", 10)));
+  //printArray(PFont.list());
 
   initializeScreens(); // initializes all screens
 

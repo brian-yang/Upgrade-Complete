@@ -32,7 +32,7 @@ class Game {
     activeEnemies = new ArrayList<Enemy>();
     removedEnemies = new ArrayList<Enemy>();
     passEnemies = new ArrayList<Enemy>();
-    shooter = new Shooter(100);
+    shooter = new Shooter(level * 10);
     lightning = new Lightning(player.getX(), player.getY());
     for (int i = 0; i < NUM_ENEMIES; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0, level));
@@ -54,6 +54,7 @@ class Game {
     shooter.update();
     weapons();
     destroyEnemies();
+    showNumBullets();
     passingEnemies();
     //println("Player angle: " + player.getAngle());
     /*  We created our own timer
@@ -143,13 +144,20 @@ class Game {
       if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())&&enemy.health <= 1){
         shooter.bullets.remove(j);
         return true;}
-      else {if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())){
+      else if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())){
         enemy.health -= 1;
         shooter.bullets.remove(j);
       }
-      }   
     }
     return false;
+  }
+  
+  void showNumBullets() {
+    pushStyle();
+    textSize(32);
+    fill(255, 255, 0);
+    text("Bullets: " + (10 * level - shooter.numBulletsShot()), 0.8 * width, 0.1 * height);
+    popStyle();
   }
 
   void laser() {
