@@ -1,5 +1,5 @@
 void backgroundGen() {
-  int bgLevel = upgrades.get("Background");
+  int bgLevel = curUpgradeLevels.get("Background");
   if (bgLevel == 2) {
     background(32, 75, 100);
   } else if (bgLevel == 3) {
@@ -10,7 +10,7 @@ void backgroundGen() {
 }
 
 void showPlayer() {
-  int playerLevel = upgrades.get("Enemy & Player");
+  int playerLevel = curUpgradeLevels.get("Minigame Graphics");
   if (playerLevel == 2) {
     pushMatrix();
     translate(game.player.getX(), game.player.getY());
@@ -22,21 +22,20 @@ void showPlayer() {
     game.player.show();
   }
 }
-//---------------------------------------This thing has to change constructor
+
 void showEnemy(Enemy enemy, float x, float y) {
-  int enemyLevel = upgrades.get("Enemy & Player");
+  int enemyLevel = curUpgradeLevels.get("Minigame Graphics");
   if (enemyLevel == 2) {
     enemyImage.resize(200,200);
     imageMode(CENTER);
     image(enemyImage, x, y);
   } else {
     enemy.show();
-    //enemy.showHitBox();
   }
 }
 
 void gameBackground() {
-  int gameBGLevel = upgrades.get("Enemy & Player");
+  int gameBGLevel = curUpgradeLevels.get("Minigame Graphics");
   if (gameBGLevel == 2) {
     background(gameBG);
   } else {
@@ -45,7 +44,7 @@ void gameBackground() {
 }
 
 void playerFlex() {
-  int flex = upgrades.get("Player Flexibility");
+  int flex = curUpgradeLevels.get("Player Movement");
   if (keys['Q']) {
     game.player.rotateLeft();
   }
@@ -68,15 +67,15 @@ void playerFlex() {
       }
     }
   }
-  // add acceleration
 }
 
 void weapons() {
-  int weaponLevel = upgrades.get("Weapons");
-  if (weaponLevel == 2) {
-    //game.strike();
+  int weaponLevel = curUpgradeLevels.get("Weapons");
+  if (weaponLevel >= 2) {
+    game.lightning();
   }
-  if (weaponLevel == 3) {
-    game.laser();
-  }
+}
+
+void textUpgrade() {
+  controlP5.setFont(controlBetterFont);
 }

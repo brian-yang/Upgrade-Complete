@@ -23,7 +23,8 @@ AudioPlayer song1;
 AudioPlayer song2;
 AudioPlayer boom;
 Minim minim;
-
+PFont betterFont;
+ControlFont controlBetterFont;
 // ======================================================
 /* SETUP & DRAW */
 // ======================================================
@@ -53,10 +54,13 @@ void setup() {
   //load variables
   bg = loadImage("pictures/space.jpg");
   player = loadImage("pictures/spaceship.png");
+  player.resize(150, 0);
   enemyImage = loadImage("pictures/enemy.png");
   gameBG = loadImage("pictures/gameBG.png");
   keys = new boolean[255];
   introPassed = false;
+  betterFont = loadFont("DroidSansMonoForPowerline-6.vlw");
+  controlBetterFont = new ControlFont(betterFont);
 }
 
 void draw() {
@@ -69,9 +73,9 @@ void draw() {
   // ==========================
   screens.get(curScreen).display(); // display current screen
   // ==========================
-  if (mousePressed && gameMode > 0) {
-     game.laser();
-     game.destroyEnemies();
+  if (curUpgradeLevels.get("Weapons") >= 3 && mousePressed && gameMode > 0) {
+    game.laser();
+    game.laserDestroy();
   }
 }
 
@@ -105,45 +109,43 @@ void keyPressed() {
       bullet.rewind();
       bullet.play();
       game.shoot();
-      }
-      }
     }
+  }
+}
 
 
 void keyReleased() {
   keys[keyCode] = false;
 }
 
-//void mousePressed() {
-//  if (gameMode > 0) {
-//    game.laser();
-//    game.destroyEnemies();
-//  }
-//}
-
-//void mouseDragged() {
-//  if (gameMode > 0) {
-//    game.laser();
-//    game.destroyEnemies();
-//  }
-//}
-
 void buyUpgrade(controlP5.Controller c) {
   if (money - 10 >= 0) {
-    // 1. Get current level of the upgrade
-    int curValue = Integer.parseInt((c.getStringValue()));
+    // 1. Get the label of the button
+    String label = c.getLabel();
+    
+    // 2. Get current level of the upgrade
+    int curValue = Integer.parseInt(label.substring(label.length() - 1));
 
-    // 2. Increment the level by one
-    c.setStringValue(Integer.toString(curValue + 1));
-
-    // 3. Set the label of the button to the new level
-    c.setLabel(c.getName() + "\n\nLevel: " + c.getStringValue());
-
-    // 4. Change the level in the upgrades dictionary
-    upgrades.put(c.getName(), Integer.parseInt(c.getStringValue()));
-
-    // 5. Decrease the amount of money the player has
-    money -= 10;
+    if (curValue <= Integer.parseInt(c.getStringValue()) - 1) {
+        // 3. Increment the level on the label by one
+        c.setLabel(label.substring(0, label.length() - 1) + Integer.toString(curValue + 1));
+        
+        // 4. Increment the level in curUpgradeLevels
+        curUpgradeLevels.put(c.getName(), curValue + 1);
+    
+        // 5. Decrease the amount of money the player has
+        money -= 10 * curValue;
+        
+        // 6. Change button background color if max level is reached
+        if (curValue + 1 == Integer.parseInt(c.getStringValue())) {
+          c.setColorBackground(color(0, 153, 0));
+        }
+        
+        // Edge Case: Text Upgrade
+        if (c.getName().equals("Text")) {
+          textUpgrade(); // found in upgrades tab
+        }
+    }
   }
 }
 

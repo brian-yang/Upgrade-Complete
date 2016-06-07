@@ -51,7 +51,7 @@ class Game {
     drawEnemies();
     shooter.show();
     shooter.update();
-    lightning();
+    weapons();
     destroyEnemies();
     passingEnemies();
     //println("Player angle: " + player.getAngle());
@@ -101,18 +101,12 @@ class Game {
   }
 
   void destroyEnemies() {
-    boolean removed = false;
     for (int i = 0; i < activeEnemies.size(); i++) {
-      removed = shootDestroy(activeEnemies.get(i));
-      if (!removed) {
-        removed = laserDestroy(activeEnemies.get(i));
-      }
-      if (removed) {
+      if (shootDestroy(activeEnemies.get(i))) {
         removedEnemies.add(activeEnemies.remove(i));
         i--;
         boom.rewind();
         boom.play();
-        removed = false;
       }
     }
   }
@@ -160,8 +154,15 @@ class Game {
     laser.play();
   }
 
-  boolean laserDestroy(Enemy enemy) {
-    return enemy.laserShot();
+  void laserDestroy() {
+    for (int i = 0; i < activeEnemies.size(); i++) {
+      if (activeEnemies.get(i).laserShot()) {
+        removedEnemies.add(activeEnemies.remove(i));
+        boom.rewind();
+        boom.play();
+        i--;
+      }
+    }
   }
   
   // Lightning
@@ -174,6 +175,8 @@ class Game {
       if (e.health <= 0) {
         activeEnemies.remove(e);
         removedEnemies.add(e);
+        boom.rewind();
+        boom.play();
       }
       lightning.reset(player.getX(), player.getY());
     }

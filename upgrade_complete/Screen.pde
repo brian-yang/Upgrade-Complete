@@ -16,7 +16,7 @@ class Screen {
               textSize(16);
               text(store,200, 150, 300, 300);
               first();
-           }  // Text wraps within text box
+            }  // Text wraps within text box
             if (introPassed){ 
               String buyMenu = "Ok, here is $500. Have fun!";
               text(buyMenu, 200, 200, 300, 300);
