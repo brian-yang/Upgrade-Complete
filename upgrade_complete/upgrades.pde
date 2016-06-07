@@ -67,17 +67,19 @@ void playerFlex() {
       }
     }
   }
-  if (keys['A'] && keys['D']) {
-    game.player.xVelocity = 1;
-  }
-  if (keys['W'] && keys['S']) {
-    game.player.yVelocity = 1;
-  }
-  if (!keys['A'] && !keys['D']) {
-    game.player.xVelocity = 1;
-  }
-  if (!keys['W'] && !keys['S']) {
-    game.player.yVelocity = 1;
+  if (flex >= 4) {
+    if (keys['A'] && keys['D']) {
+      game.player.xVelocity = 1;
+    }
+    if (keys['W'] && keys['S']) {
+      game.player.yVelocity = 1;
+    }
+    if (!keys['A'] && !keys['D']) {
+      game.player.xVelocity = 1;
+    }
+    if (!keys['W'] && !keys['S']) {
+      game.player.yVelocity = 1;
+    }
   }
 }
 

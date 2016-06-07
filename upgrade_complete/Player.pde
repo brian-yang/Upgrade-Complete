@@ -29,16 +29,20 @@ class Player extends Sprite {
     if (withinBounds(-xVelocity, 0)) {
       game.player.setX(game.player.getX() - xVelocity);
     }
-    if (Math.abs(xVelocity + xAcceleration) <= 5) {
-      xVelocity += xAcceleration;
+    if (curUpgradeLevels.get("Player Movement") >= 4) {
+      if (Math.abs(xVelocity + xAcceleration) <= 5) {
+        xVelocity += xAcceleration;
+      }
     }
   }
   void goRight() {
     if (withinBounds(xVelocity, 0)) {
       game.player.setX(game.player.getX() + xVelocity);
     }
-    if (Math.abs(xVelocity + xAcceleration) <= 5) {
-      xVelocity += xAcceleration;
+    if (curUpgradeLevels.get("Player Movement") >= 4) {
+      if (Math.abs(xVelocity + xAcceleration) <= 5) {
+        xVelocity += xAcceleration;
+      }
     }
   }
   
@@ -46,16 +50,20 @@ class Player extends Sprite {
     if (withinBounds(0, -yVelocity)) {
       game.player.setY(game.player.getY() - yVelocity);
     }
-    if (Math.abs(yVelocity + yAcceleration) <= 5) {
-      yVelocity += yAcceleration;
+    if (curUpgradeLevels.get("Player Movement") >= 4) {
+      if (Math.abs(yVelocity + yAcceleration) <= 5) {
+        yVelocity += yAcceleration;
+      }
     }
   }
   void goDown() {
     if (withinBounds(0, yVelocity)) {
       game.player.setY(game.player.getY() + yVelocity);
     }
-    if (Math.abs(yVelocity + yAcceleration) <= 5) {
-      yVelocity += yAcceleration;
+    if (curUpgradeLevels.get("Player Movement") >= 4) {
+      if (Math.abs(yVelocity + yAcceleration) <= 5) {
+        yVelocity += yAcceleration;
+      }
     }
   }
   
