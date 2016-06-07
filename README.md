@@ -21,11 +21,11 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Get intro screen to explain the game [Done]
 * Get the following upgrades to work:
   * Backgrounds [Done]
-  * Player movement [In progress]
+  * Player movement [Done]
   * Weapons [Done]
-  * Music [In progress]
+  * Music [Done]
   * Sprites [Done]
-* Make minigame shooter more complex (eg, have user protect a base)
+* Make minigame shooter more complex (eg, have user protect a base) [Done]
 
 ## Development Log
 ### 5/14/16
