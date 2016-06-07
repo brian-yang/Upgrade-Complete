@@ -109,3 +109,10 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Added soundtrack, and sound effects for guns
 * Added explosion sound when enemy dies
 * Get lightning to automatically target enemies
+
+### 6/6/16
+* Made music and sounds only if upgraded
+* Changed bullet shape when upgraded
+
+
+

@@ -10,13 +10,20 @@ class Bullet {
     velocity.mult(5);
   }
   
+  
   void show() {
+    int bulletLevel = upgrades.get("Enemy & Player");
+    if (bulletLevel == 1){
     pushStyle();
     ellipseMode(CENTER);
     ellipse(location.x, location.y, 20, 20);
     popStyle();
+    } else if (bulletLevel == 2){
+      pushStyle();
+    image(bullet1,location.x, location.y);
+    popStyle();
   }
-  
+  }
   void update() {
     location.add(velocity);
   }

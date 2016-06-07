@@ -17,6 +17,7 @@ PImage bg;
 PImage player;
 PImage enemyImage;
 PImage gameBG;
+PImage bullet1;
 AudioPlayer bullet;
 AudioPlayer electricity;
 AudioPlayer laser;
@@ -39,6 +40,7 @@ void setup() {
   song1 = minim.loadFile("sound/song1.mp3");
   song2 = minim.loadFile("sound/song2.mp3");
   boom = minim.loadFile("sound/boom.wav");
+  
   controlP5 = new ControlP5(this);
 
   initializeScreens(); // initializes all screens
@@ -56,6 +58,8 @@ void setup() {
   player = loadImage("pictures/spaceship.png");
   enemyImage = loadImage("pictures/enemy.png");
   gameBG = loadImage("pictures/gameBG.png");
+  bullet1 = loadImage("pictures/bullet1.png");
+  
   keys = new boolean[255];
   introPassed = false;
 }
