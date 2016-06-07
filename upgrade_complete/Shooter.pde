@@ -12,8 +12,8 @@ class Shooter {
   void shoot(float x, float y, float angle) {
     if (bulletsShot < limit) {
         bullets.add(new Bullet(x, y, angle));
+        bulletsShot += 1;
     }
-    bulletsShot = bullets.size();
   }
   
   void show() {
@@ -26,6 +26,10 @@ class Shooter {
     for (Bullet b : bullets) {
       b.update();
     }
+  }
+  
+  int numBulletsShot() {
+    return bulletsShot;
   }
 }
   

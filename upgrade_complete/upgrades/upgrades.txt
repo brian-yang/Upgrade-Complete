@@ -1,6 +1,6 @@
-Music:1
-Background:1
-Buttons:1
-Text:1
-Enemy & Player:1
-Player Flexibility:1
+Music:2
+Background:3
+Weapons:3
+Minigame Graphics:2
+Player Movement:4
+Text:2

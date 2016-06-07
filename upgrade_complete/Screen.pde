@@ -10,16 +10,16 @@ class Screen {
             fill(0);
             String welcome = "The aim of the game is to upgrade... EVERYTHING! You have to upgrade everything to truly win.";
             textSize(12);
-            text(welcome, 200, 100, 300, 300);  // Text wraps within text box 
+            text(welcome, 200, 150, 300, 300);  // Text wraps within text box 
             if (timeElapsed > 3000){             
               String store = "Are you ready to start?";
               textSize(16);
-              text(store,200, 150, 300, 300);
+              text(store, 200, 250, 300, 300);
               first();
-           }  // Text wraps within text box
+            }  // Text wraps within text box
             if (introPassed){ 
               String buyMenu = "Ok, here is $500. Have fun!";
-              text(buyMenu, 200, 200, 300, 300);
+              text(buyMenu, 200, 500, 300, 300);
               welcome();
             }
          }

@@ -6,18 +6,18 @@ boolean won = false;
 // ======================================================
 void first() {
   screenButtons.get(4)
-    .setPosition(200, 250)
+    .setPosition(200, 300)
     .setId(0)
-    .setSize(100,100)
+    .setSize(100, 75)
     .setLabel("Yes!");
   addActiveButtons(4);
 }
 
 void welcome() {
   screenButtons.get(0)
-    .setPosition(200, 450)
+    .setPosition(200, 550)
     .setId(0)
-    .setSize(100,100);
+    .setSize(100,75);
   addActiveButtons(0);
 }
 
@@ -46,7 +46,7 @@ void play() {
     endGame();
     screenButtons.get(2).setPosition(200, 250);
     addActiveButtons(2);
-    screenButtons.get(1).setLabel("Level" + level);
+    screenButtons.get(1).setLabel("Level: " + level);
     gameover = true;
   }
    if (game.isFinished()){
@@ -54,14 +54,14 @@ void play() {
      electricity.pause();
      background(255);
      endGame();
-    screenButtons.get(1).setLabel("Level" + level);
+    screenButtons.get(1).setLabel("Level: " + level);
      screenButtons.get(2).setPosition(200, 250);
      addActiveButtons(2);
      gameover = true;
      if (won == false){
        textSize(32);
         fill(0);
-        text("lost",500 ,500 );
+        text("You lost.",500 ,500 );
    } else {
    
     textSize(100);
@@ -86,8 +86,8 @@ void addActiveButtons(int index) {
 }
 
 void storeUpgrades() {
-  float widthMultiplier = .05;
-  float heightMultiplier = .7;
+  float widthMultiplier = .65;
+  float heightMultiplier = .05;
   float startWidth = widthMultiplier * width;
   float startHeight = heightMultiplier * height;
   
@@ -98,8 +98,8 @@ void storeUpgrades() {
       activeButtons.add(b);
       
       // Calculate button placement
-      widthMultiplier += .15;
-      //heightMultiplier += .1;  
+      //widthMultiplier += .15;
+      heightMultiplier += .15;  
       startWidth = widthMultiplier * width;
       startHeight = heightMultiplier * height;
     }
@@ -110,8 +110,7 @@ void storeUpgrades() {
 void endGame() {
   if (gameMode == 1) {
     money += 50;
-  }
-   // forces money to be added once per game
+  } // forces money to be added once per game
   gameMode = 0;
 }
 

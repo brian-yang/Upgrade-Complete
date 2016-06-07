@@ -12,7 +12,7 @@ class Bullet {
   
   
   void show() {
-    int bulletLevel = upgrades.get("Enemy & Player");
+    int bulletLevel = curUpgradeLevels.get("Minigame Graphics");
     if (bulletLevel == 1){
     pushStyle();
     ellipseMode(CENTER);

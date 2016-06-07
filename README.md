@@ -111,8 +111,10 @@ Our demo version for May 23rd/24th shows that we have created the foundations fo
 * Get lightning to automatically target enemies
 
 ### 6/6/16
-* Made music and sounds only if upgraded
+* Fix bugs with weapons & text upgrades
+* Add acceleration
+* Add win/defeat screen
+* Fix sounds
+* Change dimensions of buttons and other elements
 * Changed bullet shape when upgraded
-
-
-
+* Made music and sounds only if upgraded

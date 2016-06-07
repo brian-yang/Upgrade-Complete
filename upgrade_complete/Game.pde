@@ -21,10 +21,9 @@ class Game {
 
 
   Game() {
-    
     if (musicPlayable == true){
-    song1.loop();
-    song1.play();
+      song1.loop();
+      song1.play();
     }
     NUM_ENEMIES += (level / 2);
     
@@ -35,7 +34,7 @@ class Game {
     activeEnemies = new ArrayList<Enemy>();
     removedEnemies = new ArrayList<Enemy>();
     passEnemies = new ArrayList<Enemy>();
-    shooter = new Shooter(100);
+    shooter = new Shooter(level * 10);
     lightning = new Lightning(player.getX(), player.getY());
     for (int i = 0; i < NUM_ENEMIES; i++) {
       enemies.add(new Enemy((int) (Math.random()* (width-100)), 0, level));
@@ -49,13 +48,15 @@ class Game {
 
   void run() {
     gameBackground();
+    drawPlayerBase();
     drawPlayer();
     playerFlex();
     drawEnemies();
     shooter.show();
     shooter.update();
-    lightning();
+    weapons();
     destroyEnemies();
+    showNumBullets();
     passingEnemies();
     //println("Player angle: " + player.getAngle());
     /*  We created our own timer
@@ -76,6 +77,14 @@ class Game {
   // ======================================================
   /* DRAW HELPER METHODS */
   // ======================================================
+
+  void drawPlayerBase() {
+    pushStyle();
+    stroke(0, 255, 0);
+    strokeWeight(5);
+    line(0, height - 5, width, height - 5);
+    popStyle();
+  }
 
   void drawPlayer() {
     showPlayer();
@@ -104,20 +113,14 @@ class Game {
   }
 
   void destroyEnemies() {
-    boolean removed = false;
     for (int i = 0; i < activeEnemies.size(); i++) {
-      removed = shootDestroy(activeEnemies.get(i));
-      if (!removed) {
-        removed = laserDestroy(activeEnemies.get(i));
-      }
-      if (removed) {
+      if (shootDestroy(activeEnemies.get(i))) {
         removedEnemies.add(activeEnemies.remove(i));
         i--;
-        if (musicPlayable == true){
-        boom.rewind();
-        boom.play();
-      }
-        removed = false;
+        if (musicPlayable) {
+          boom.rewind();
+          boom.play();
+        }
       }
     }
   }
@@ -145,13 +148,20 @@ class Game {
       if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())&&enemy.health <= 1){
         shooter.bullets.remove(j);
         return true;}
-      else {if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())){
+      else if (enemy.hasCollided(shooter.bullets.get(j).getX(), shooter.bullets.get(j).getY())){
         enemy.health -= 1;
         shooter.bullets.remove(j);
       }
-      }   
     }
     return false;
+  }
+  
+  void showNumBullets() {
+    pushStyle();
+    textSize(32);
+    fill(255, 255, 0);
+    text("Bullets: " + (10 * level - shooter.numBulletsShot()), 0.8 * width, 0.1 * height);
+    popStyle();
   }
 
   void laser() {
@@ -161,14 +171,23 @@ class Game {
     strokeWeight(5);
     line(player.getX(), player.getY(), mouseX, mouseY);
     popStyle();
-    if (musicPlayable == true){
-    laser.rewind();
-    laser.play();
-  }
+    if (musicPlayable) {
+      laser.rewind();
+      laser.play();
+    }
   }
 
-  boolean laserDestroy(Enemy enemy) {
-    return enemy.laserShot();
+  void laserDestroy() {
+    for (int i = 0; i < activeEnemies.size(); i++) {
+      if (activeEnemies.get(i).laserShot()) {
+        removedEnemies.add(activeEnemies.remove(i));
+        if (musicPlayable) {
+          boom.rewind();
+          boom.play();
+        }
+        i--;
+      }
+    }
   }
   
   // Lightning
@@ -181,6 +200,10 @@ class Game {
       if (e.health <= 0) {
         activeEnemies.remove(e);
         removedEnemies.add(e);
+        if (musicPlayable) {
+          boom.rewind();
+          boom.play();
+        }
       }
       lightning.reset(player.getX(), player.getY());
     }
