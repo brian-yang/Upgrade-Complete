@@ -53,19 +53,31 @@ void playerFlex() {
   }
   if (flex >= 2) {
     if (keys['A']) {
-      game.player.setX(game.player.getX() - 1);
+      game.player.goLeft();
     }
     if (keys['D']) {
-      game.player.setX(game.player.getX() + 1);
+      game.player.goRight();
     }
     if (flex >= 3) {
       if (keys['W']) {
-        game.player.setY(game.player.getY() - 1);
+        game.player.goUp();
       }
       if (keys['S']) {
-        game.player.setY(game.player.getY() + 1);
+        game.player.goDown();
       }
     }
+  }
+  if (keys['A'] && keys['D']) {
+    game.player.xVelocity = 1;
+  }
+  if (keys['W'] && keys['S']) {
+    game.player.yVelocity = 1;
+  }
+  if (!keys['A'] && !keys['D']) {
+    game.player.xVelocity = 1;
+  }
+  if (!keys['W'] && !keys['S']) {
+    game.player.yVelocity = 1;
   }
 }
 
@@ -77,5 +89,5 @@ void weapons() {
 }
 
 void textUpgrade() {
-  controlP5.setFont(betterFont);
+  controlP5.setFont(controlBetterFont);
 }

@@ -45,14 +45,14 @@ void play() {
     endGame();
     screenButtons.get(2).setPosition(200, 250);
     addActiveButtons(2);
-    screenButtons.get(1).setLabel("Level" + level);
+    screenButtons.get(1).setLabel("Level: " + level);
     gameover = true;
   }
    if (game.isFinished()){
      song1.pause();
      background(255);
      endGame();
-    screenButtons.get(1).setLabel("Level" + level);
+    screenButtons.get(1).setLabel("Level: " + level);
      screenButtons.get(2).setPosition(200, 250);
      addActiveButtons(2);
      gameover = true;
