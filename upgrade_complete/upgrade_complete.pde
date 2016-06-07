@@ -59,7 +59,7 @@ void setup() {
   gameBG = loadImage("pictures/gameBG.png");
   keys = new boolean[255];
   introPassed = false;
-  betterFont = loadFont("DroidSansMonoForPowerline-6.vlw");
+  betterFont = loadFont("DroidSansMonoForPowerline-8.vlw");
   controlBetterFont = new ControlFont(betterFont);
 }
 

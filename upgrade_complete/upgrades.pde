@@ -77,5 +77,5 @@ void weapons() {
 }
 
 void textUpgrade() {
-  controlP5.setFont(controlBetterFont);
+  controlP5.setFont(betterFont);
 }

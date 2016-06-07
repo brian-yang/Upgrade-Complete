@@ -46,6 +46,7 @@ class Game {
 
   void run() {
     gameBackground();
+    drawPlayerBase();
     drawPlayer();
     playerFlex();
     drawEnemies();
@@ -73,6 +74,14 @@ class Game {
   // ======================================================
   /* DRAW HELPER METHODS */
   // ======================================================
+
+  void drawPlayerBase() {
+    pushStyle();
+    stroke(0, 255, 0);
+    strokeWeight(5);
+    line(0, height - 5, width, height - 5);
+    popStyle();
+  }
 
   void drawPlayer() {
     showPlayer();

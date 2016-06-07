@@ -49,7 +49,7 @@ void startUpgrades() {
 
 void shapeScreenButtons() {
   for (Button b : screenButtons) {
-    b.setSize(100, 100);
+    b.setSize(150, 100);
     b.setId(1);
     b.hide();
   }
@@ -57,7 +57,7 @@ void shapeScreenButtons() {
 
 void shapeUpgradeButtons() {
   for (Button b : upgradeButtons) {
-    b.setSize(100, 100);
+    b.setSize(150, 100);
     b.setId(2);
     b.hide();
   }
